@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AbnormalMaternalHistoryMapper">
+  <resultMap id="BaseResultMap" type="domain.AbnormalMaternalHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="preWomanID" jdbcType="VARCHAR" property="prewomanid" />
+    <result column="spontaneousAbortion" jdbcType="INTEGER" property="spontaneousabortion" />
+    <result column="artificialAbortion" jdbcType="INTEGER" property="artificialabortion" />
+    <result column="hydatidiformMole" jdbcType="INTEGER" property="hydatidiformmole" />
+    <result column="stillbornFoetus" jdbcType="INTEGER" property="stillbornfoetus" />
+    <result column="birthMalformation" jdbcType="INTEGER" property="birthmalformation" />
+    <result column="prematureBirth" jdbcType="INTEGER" property="prematurebirth" />
+    <result column="medicalAbortion" jdbcType="INTEGER" property="medicalabortion" />
+    <result column="inducedLabor" jdbcType="INTEGER" property="inducedlabor" />
+    <result column="difficultLabour" jdbcType="INTEGER" property="difficultlabour" />
+    <result column="extrauterinePregnancy" jdbcType="INTEGER" property="extrauterinepregnancy" />
+    <result column="heartDisease" jdbcType="VARCHAR" property="heartdisease" />
+    <result column="tuberculosis" jdbcType="VARCHAR" property="tuberculosis" />
+    <result column="nephropathy" jdbcType="VARCHAR" property="nephropathy" />
+    <result column="hematopathy" jdbcType="VARCHAR" property="hematopathy" />
+    <result column="hyperthyroidism" jdbcType="VARCHAR" property="hyperthyroidism" />
+    <result column="harmfulSubstance" jdbcType="VARCHAR" property="harmfulsubstance" />
+    <result column="hepatopathy" jdbcType="VARCHAR" property="hepatopathy" />
+    <result column="hypertension" jdbcType="VARCHAR" property="hypertension" />
+    <result column="diabetes" jdbcType="VARCHAR" property="diabetes" />
+    <result column="otherDiseases" jdbcType="VARCHAR" property="otherdiseases" />
+    <result column="spontaneousAbortionDescribe" jdbcType="LONGVARCHAR" property="spontaneousabortiondescribe" />
+    <result column="artificialAbortionDescribe" jdbcType="LONGVARCHAR" property="artificialabortiondescribe" />
+    <result column="hydatidiformMoleDescribe" jdbcType="LONGVARCHAR" property="hydatidiformmoledescribe" />
+    <result column="stillbornFoetusDescribe" jdbcType="LONGVARCHAR" property="stillbornfoetusdescribe" />
+    <result column="birthMalformationDescribe" jdbcType="LONGVARCHAR" property="birthmalformationdescribe" />
+    <result column="prematureBirthDescribe" jdbcType="LONGVARCHAR" property="prematurebirthdescribe" />
+    <result column="medicalAbortionDescribe" jdbcType="LONGVARCHAR" property="medicalabortiondescribe" />
+    <result column="inducedLaborDescribe" jdbcType="LONGVARCHAR" property="inducedlabordescribe" />
+    <result column="difficultLabourDescribe" jdbcType="LONGVARCHAR" property="difficultlabourdescribe" />
+    <result column="extrauterinePregnancyDescribe" jdbcType="LONGVARCHAR" property="extrauterinepregnancydescribe" />
+    <result column="heartDiseaseDescribe" jdbcType="LONGVARCHAR" property="heartdiseasedescribe" />
+    <result column="tuberculosisDescribe" jdbcType="LONGVARCHAR" property="tuberculosisdescribe" />
+    <result column="nephropathyDescribe" jdbcType="LONGVARCHAR" property="nephropathydescribe" />
+    <result column="hematopathyDescribe" jdbcType="LONGVARCHAR" property="hematopathydescribe" />
+    <result column="hyperthyroidismDescribe" jdbcType="LONGVARCHAR" property="hyperthyroidismdescribe" />
+    <result column="harmfulSubstanceDescribe" jdbcType="LONGVARCHAR" property="harmfulsubstancedescribe" />
+    <result column="hepatopathyDescribe" jdbcType="LONGVARCHAR" property="hepatopathydescribe" />
+    <result column="hypertensionDescribe" jdbcType="LONGVARCHAR" property="hypertensiondescribe" />
+    <result column="diabetesDescribe" jdbcType="LONGVARCHAR" property="diabetesdescribe" />
+    <result column="otherDiseasesDescribe" jdbcType="LONGVARCHAR" property="otherdiseasesdescribe" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from abnormal_maternal_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.AbnormalMaternalHistory">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into abnormal_maternal_history (id, preWomanID, spontaneousAbortion, 
+      artificialAbortion, hydatidiformMole, stillbornFoetus, 
+      birthMalformation, prematureBirth, medicalAbortion, 
+      inducedLabor, difficultLabour, extrauterinePregnancy, 
+      heartDisease, tuberculosis, nephropathy, 
+      hematopathy, hyperthyroidism, harmfulSubstance, 
+      hepatopathy, hypertension, diabetes, 
+      otherDiseases, spontaneousAbortionDescribe, 
+      artificialAbortionDescribe, hydatidiformMoleDescribe, 
+      stillbornFoetusDescribe, birthMalformationDescribe, 
+      prematureBirthDescribe, medicalAbortionDescribe, 
+      inducedLaborDescribe, difficultLabourDescribe, 
+      extrauterinePregnancyDescribe, heartDiseaseDescribe, 
+      tuberculosisDescribe, nephropathyDescribe, 
+      hematopathyDescribe, hyperthyroidismDescribe, 
+      harmfulSubstanceDescribe, hepatopathyDescribe, 
+      hypertensionDescribe, diabetesDescribe, 
+      otherDiseasesDescribe)
+    values (#{id,jdbcType=INTEGER}, #{prewomanid,jdbcType=VARCHAR}, #{spontaneousabortion,jdbcType=INTEGER}, 
+      #{artificialabortion,jdbcType=INTEGER}, #{hydatidiformmole,jdbcType=INTEGER}, #{stillbornfoetus,jdbcType=INTEGER}, 
+      #{birthmalformation,jdbcType=INTEGER}, #{prematurebirth,jdbcType=INTEGER}, #{medicalabortion,jdbcType=INTEGER}, 
+      #{inducedlabor,jdbcType=INTEGER}, #{difficultlabour,jdbcType=INTEGER}, #{extrauterinepregnancy,jdbcType=INTEGER}, 
+      #{heartdisease,jdbcType=VARCHAR}, #{tuberculosis,jdbcType=VARCHAR}, #{nephropathy,jdbcType=VARCHAR}, 
+      #{hematopathy,jdbcType=VARCHAR}, #{hyperthyroidism,jdbcType=VARCHAR}, #{harmfulsubstance,jdbcType=VARCHAR}, 
+      #{hepatopathy,jdbcType=VARCHAR}, #{hypertension,jdbcType=VARCHAR}, #{diabetes,jdbcType=VARCHAR}, 
+      #{otherdiseases,jdbcType=VARCHAR}, #{spontaneousabortiondescribe,jdbcType=LONGVARCHAR}, 
+      #{artificialabortiondescribe,jdbcType=LONGVARCHAR}, #{hydatidiformmoledescribe,jdbcType=LONGVARCHAR}, 
+      #{stillbornfoetusdescribe,jdbcType=LONGVARCHAR}, #{birthmalformationdescribe,jdbcType=LONGVARCHAR}, 
+      #{prematurebirthdescribe,jdbcType=LONGVARCHAR}, #{medicalabortiondescribe,jdbcType=LONGVARCHAR}, 
+      #{inducedlabordescribe,jdbcType=LONGVARCHAR}, #{difficultlabourdescribe,jdbcType=LONGVARCHAR}, 
+      #{extrauterinepregnancydescribe,jdbcType=LONGVARCHAR}, #{heartdiseasedescribe,jdbcType=LONGVARCHAR}, 
+      #{tuberculosisdescribe,jdbcType=LONGVARCHAR}, #{nephropathydescribe,jdbcType=LONGVARCHAR}, 
+      #{hematopathydescribe,jdbcType=LONGVARCHAR}, #{hyperthyroidismdescribe,jdbcType=LONGVARCHAR}, 
+      #{harmfulsubstancedescribe,jdbcType=LONGVARCHAR}, #{hepatopathydescribe,jdbcType=LONGVARCHAR}, 
+      #{hypertensiondescribe,jdbcType=LONGVARCHAR}, #{diabetesdescribe,jdbcType=LONGVARCHAR}, 
+      #{otherdiseasesdescribe,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.AbnormalMaternalHistory">
+    update abnormal_maternal_history
+    set preWomanID = #{prewomanid,jdbcType=VARCHAR},
+      spontaneousAbortion = #{spontaneousabortion,jdbcType=INTEGER},
+      artificialAbortion = #{artificialabortion,jdbcType=INTEGER},
+      hydatidiformMole = #{hydatidiformmole,jdbcType=INTEGER},
+      stillbornFoetus = #{stillbornfoetus,jdbcType=INTEGER},
+      birthMalformation = #{birthmalformation,jdbcType=INTEGER},
+      prematureBirth = #{prematurebirth,jdbcType=INTEGER},
+      medicalAbortion = #{medicalabortion,jdbcType=INTEGER},
+      inducedLabor = #{inducedlabor,jdbcType=INTEGER},
+      difficultLabour = #{difficultlabour,jdbcType=INTEGER},
+      extrauterinePregnancy = #{extrauterinepregnancy,jdbcType=INTEGER},
+      heartDisease = #{heartdisease,jdbcType=VARCHAR},
+      tuberculosis = #{tuberculosis,jdbcType=VARCHAR},
+      nephropathy = #{nephropathy,jdbcType=VARCHAR},
+      hematopathy = #{hematopathy,jdbcType=VARCHAR},
+      hyperthyroidism = #{hyperthyroidism,jdbcType=VARCHAR},
+      harmfulSubstance = #{harmfulsubstance,jdbcType=VARCHAR},
+      hepatopathy = #{hepatopathy,jdbcType=VARCHAR},
+      hypertension = #{hypertension,jdbcType=VARCHAR},
+      diabetes = #{diabetes,jdbcType=VARCHAR},
+      otherDiseases = #{otherdiseases,jdbcType=VARCHAR},
+      spontaneousAbortionDescribe = #{spontaneousabortiondescribe,jdbcType=LONGVARCHAR},
+      artificialAbortionDescribe = #{artificialabortiondescribe,jdbcType=LONGVARCHAR},
+      hydatidiformMoleDescribe = #{hydatidiformmoledescribe,jdbcType=LONGVARCHAR},
+      stillbornFoetusDescribe = #{stillbornfoetusdescribe,jdbcType=LONGVARCHAR},
+      birthMalformationDescribe = #{birthmalformationdescribe,jdbcType=LONGVARCHAR},
+      prematureBirthDescribe = #{prematurebirthdescribe,jdbcType=LONGVARCHAR},
+      medicalAbortionDescribe = #{medicalabortiondescribe,jdbcType=LONGVARCHAR},
+      inducedLaborDescribe = #{inducedlabordescribe,jdbcType=LONGVARCHAR},
+      difficultLabourDescribe = #{difficultlabourdescribe,jdbcType=LONGVARCHAR},
+      extrauterinePregnancyDescribe = #{extrauterinepregnancydescribe,jdbcType=LONGVARCHAR},
+      heartDiseaseDescribe = #{heartdiseasedescribe,jdbcType=LONGVARCHAR},
+      tuberculosisDescribe = #{tuberculosisdescribe,jdbcType=LONGVARCHAR},
+      nephropathyDescribe = #{nephropathydescribe,jdbcType=LONGVARCHAR},
+      hematopathyDescribe = #{hematopathydescribe,jdbcType=LONGVARCHAR},
+      hyperthyroidismDescribe = #{hyperthyroidismdescribe,jdbcType=LONGVARCHAR},
+      harmfulSubstanceDescribe = #{harmfulsubstancedescribe,jdbcType=LONGVARCHAR},
+      hepatopathyDescribe = #{hepatopathydescribe,jdbcType=LONGVARCHAR},
+      hypertensionDescribe = #{hypertensiondescribe,jdbcType=LONGVARCHAR},
+      diabetesDescribe = #{diabetesdescribe,jdbcType=LONGVARCHAR},
+      otherDiseasesDescribe = #{otherdiseasesdescribe,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, preWomanID, spontaneousAbortion, artificialAbortion, hydatidiformMole, 
+    stillbornFoetus, birthMalformation, prematureBirth, medicalAbortion, inducedLabor, 
+    difficultLabour, extrauterinePregnancy, heartDisease, tuberculosis, nephropathy, 
+    hematopathy, hyperthyroidism, harmfulSubstance, hepatopathy, hypertension, diabetes, 
+    otherDiseases, spontaneousAbortionDescribe, artificialAbortionDescribe, hydatidiformMoleDescribe, 
+    stillbornFoetusDescribe, birthMalformationDescribe, prematureBirthDescribe, medicalAbortionDescribe, 
+    inducedLaborDescribe, difficultLabourDescribe, extrauterinePregnancyDescribe, heartDiseaseDescribe, 
+    tuberculosisDescribe, nephropathyDescribe, hematopathyDescribe, hyperthyroidismDescribe, 
+    harmfulSubstanceDescribe, hepatopathyDescribe, hypertensionDescribe, diabetesDescribe, 
+    otherDiseasesDescribe
+    from abnormal_maternal_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, preWomanID, spontaneousAbortion, artificialAbortion, hydatidiformMole, 
+    stillbornFoetus, birthMalformation, prematureBirth, medicalAbortion, inducedLabor, 
+    difficultLabour, extrauterinePregnancy, heartDisease, tuberculosis, nephropathy, 
+    hematopathy, hyperthyroidism, harmfulSubstance, hepatopathy, hypertension, diabetes, 
+    otherDiseases, spontaneousAbortionDescribe, artificialAbortionDescribe, hydatidiformMoleDescribe, 
+    stillbornFoetusDescribe, birthMalformationDescribe, prematureBirthDescribe, medicalAbortionDescribe, 
+    inducedLaborDescribe, difficultLabourDescribe, extrauterinePregnancyDescribe, heartDiseaseDescribe, 
+    tuberculosisDescribe, nephropathyDescribe, hematopathyDescribe, hyperthyroidismDescribe, 
+    harmfulSubstanceDescribe, hepatopathyDescribe, hypertensionDescribe, diabetesDescribe, 
+    otherDiseasesDescribe
+    from abnormal_maternal_history
+  </select>
+</mapper>

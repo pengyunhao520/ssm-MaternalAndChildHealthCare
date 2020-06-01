@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PersonBasicInformationMapper">
+  <resultMap id="BaseResultMap" type="domain.PersonBasicInformation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="healthCode" jdbcType="VARCHAR" property="healthcode" />
+    <result column="Name" jdbcType="VARCHAR" property="name" />
+    <result column="Sex" jdbcType="CHAR" property="sex" />
+    <result column="Age" jdbcType="INTEGER" property="age" />
+    <result column="BirthDate" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="Nation" jdbcType="INTEGER" property="nation.nationid" />
+    <result column="profession" jdbcType="VARCHAR" property="profession" />
+    <result column="Education" jdbcType="INTEGER" property="education.id" />
+    <result column="familyMemberType" jdbcType="CHAR" property="familymembertype" />
+    <result column="Province" jdbcType="INTEGER" property="province.id" />
+    <result column="City" jdbcType="INTEGER" property="city.id" />
+    <result column="County" jdbcType="INTEGER" property="county.id" />
+    <result column="Town" jdbcType="INTEGER" property="town.id" />
+    <result column="GARDON" jdbcType="VARCHAR" property="gardon" />
+    <result column="workUnit" jdbcType="VARCHAR" property="workunit" />
+    <result column="PhoneNumber" jdbcType="CHAR" property="phonenumber" />
+    <result column="Wechat" jdbcType="VARCHAR" property="wechat" />
+    <result column="ID_Number" jdbcType="VARCHAR" property="idNumber" />
+    <result column="IS_local" jdbcType="CHAR" property="isLocal" />
+    <result column="BirthCertificateNumber" jdbcType="VARCHAR" property="birthcertificatenumber" />
+    <result column="RestAddress" jdbcType="VARCHAR" property="restaddress" />
+    <result column="IS_PregnantWoman" jdbcType="CHAR" property="isPregnantwoman" />
+    <result column="IS_Birth" jdbcType="CHAR" property="isBirth" />
+    <result column="MarryHistory" jdbcType="INTEGER" property="marryhistory" />
+    <result column="nname" jdbcType="INTEGER" property="nation.nationname" />
+    <result column="ename" jdbcType="INTEGER" property="education.name" />
+    <result column="spname" jdbcType="INTEGER" property="province.name" />
+    <result column="scname" jdbcType="INTEGER" property="city.name" />
+    <result column="ssname" jdbcType="INTEGER" property="county.name" />
+    <result column="stname" jdbcType="INTEGER" property="town.name" />
+    <result column="psychosis" jdbcType="INTEGER" property="geneticHistory.psychosis" />
+    <result column="dementia" jdbcType="INTEGER" property="geneticHistory.dementia" />
+    <result column="malformation" jdbcType="INTEGER" property="geneticHistory.malformation" />
+    <result column="geneticdisease" jdbcType="INTEGER" property="geneticHistory.geneticdisease" />
+    <result column="psychosisdescribe" jdbcType="INTEGER" property="geneticHistory.psychosisdescribe" />
+    <result column="dementiadescribe" jdbcType="INTEGER" property="geneticHistory.dementiadescribe" />
+    <result column="malformationdescribe" jdbcType="INTEGER" property="geneticHistory.malformationdescribe" />
+    <result column="geneticdiseasedescribe" jdbcType="INTEGER" property="geneticHistory.geneticdiseasedescribe" />
+    
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from person_basic_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.PersonBasicInformation">
+    
+    insert into person_basic_information ( healthCode, Name, 
+      Sex, Age, BirthDate, 
+      Nation, profession, Education, 
+      familyMemberType, Province, City, 
+      County, Town, GARDON, 
+      workUnit, PhoneNumber, Wechat, 
+      ID_Number, IS_local, BirthCertificateNumber, 
+      RestAddress, IS_PregnantWoman, IS_Birth, 
+      MarryHistory)
+    values ( #{healthcode,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=CHAR}, #{age,jdbcType=INTEGER}, #{birthdate,jdbcType=TIMESTAMP}, 
+      #{nation.nationid,jdbcType=INTEGER}, #{profession,jdbcType=VARCHAR}, #{education.id,jdbcType=INTEGER}, 
+      #{familymembertype,jdbcType=CHAR}, #{province.id,jdbcType=INTEGER}, #{city.id,jdbcType=INTEGER}, 
+      #{county.id,jdbcType=INTEGER}, #{town.id,jdbcType=INTEGER}, #{gardon,jdbcType=VARCHAR}, 
+      #{workunit,jdbcType=VARCHAR}, #{phonenumber,jdbcType=CHAR}, #{wechat,jdbcType=VARCHAR}, 
+      #{idNumber,jdbcType=VARCHAR}, #{isLocal,jdbcType=CHAR}, #{birthcertificatenumber,jdbcType=VARCHAR}, 
+      #{restaddress,jdbcType=VARCHAR}, #{isPregnantwoman,jdbcType=CHAR}, #{isBirth,jdbcType=CHAR}, 
+      #{marryhistory,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.PersonBasicInformation">
+    update person_basic_information
+    set healthCode = #{healthcode,jdbcType=VARCHAR},
+      Name = #{name,jdbcType=VARCHAR},
+      Sex = #{sex,jdbcType=CHAR},
+      Age = #{age,jdbcType=INTEGER},
+      BirthDate = #{birthdate,jdbcType=TIMESTAMP},
+      Nation = #{nation.nationid,jdbcType=INTEGER},
+      profession = #{profession,jdbcType=VARCHAR},
+      Education = #{education.id,jdbcType=INTEGER},
+      familyMemberType = #{familymembertype,jdbcType=CHAR},
+      Province = #{province.id,jdbcType=INTEGER},
+      City = #{city.id,jdbcType=INTEGER},
+      County = #{county.id,jdbcType=INTEGER},
+      Town = #{town.id,jdbcType=INTEGER},
+      GARDON = #{gardon,jdbcType=VARCHAR},
+      workUnit = #{workunit,jdbcType=VARCHAR},
+      PhoneNumber = #{phonenumber,jdbcType=CHAR},
+      Wechat = #{wechat,jdbcType=VARCHAR},
+      ID_Number = #{idNumber,jdbcType=VARCHAR},
+      IS_local = #{isLocal,jdbcType=CHAR},
+      BirthCertificateNumber = #{birthcertificatenumber,jdbcType=VARCHAR},
+      RestAddress = #{restaddress,jdbcType=VARCHAR},
+      IS_PregnantWoman = #{isPregnantwoman,jdbcType=CHAR},
+      IS_Birth = #{isBirth,jdbcType=CHAR},
+      MarryHistory = #{marryhistory,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, healthCode, Name, Sex, Age, BirthDate, Nation, profession, Education, 
+    familyMemberType, Province, City, County, Town, GARDON, workUnit, PhoneNumber, Wechat, 
+    ID_Number, IS_local, BirthCertificateNumber, RestAddress, IS_PregnantWoman, IS_Birth, 
+    MarryHistory
+    from person_basic_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, healthCode, Name, Sex, Age, BirthDate, Nation, profession, Education, 
+    familyMemberType, Province, City, County, Town, GARDON, workUnit, PhoneNumber, Wechat, 
+    ID_Number, IS_local, BirthCertificateNumber, RestAddress, IS_PregnantWoman, IS_Birth, 
+    MarryHistory
+    from person_basic_information
+  </select>
+  <!-- 查询idnumber -->
+   <select id="selectIDnumber" resultMap="BaseResultMap">
+    select id, Name, Age, PhoneNumber,ID_Number
+    from person_basic_information
+  </select>
+  
+  <!-- 条件查询 -->
+   <select id="selectByQuery" parameterType="PersonBasicInformationQuery" resultMap="BaseResultMap">
+    select p.id, p.healthCode, p.Name, p.Sex, p.Age, p.BirthDate, p.Nation, p.profession, p.Education, 
+    p.familyMemberType, p.Province, p.City, p.County, p.Town, p.GARDON, p.workUnit, p.PhoneNumber, p.Wechat, 
+    p.ID_Number, p.IS_local, p.BirthCertificateNumber, p.RestAddress, p.IS_PregnantWoman, p.IS_Birth, 
+    p.MarryHistory,e.name as ename,n.nationName as nname,sp.name as spname,sc.name as scname,sa.name as ssname,
+    ss.name as stname,gh.psychosis as psychosis,gh.dementia as dementia,gh.malformation as malformation,
+    gh.geneticdisease as geneticdisease,gh.psychosisdescribe as psychosisdescribe,gh.dementiadescribe as dementiadescribe,
+    gh.malformationdescribe as malformationdescribe,gh.geneticdiseasedescribe as geneticdiseasedescribe
+    from person_basic_information p left join education e on p.Education=e.id
+    left join nation n on p.Nation=n.nationID left join sysprovince sp on p.Province=sp.id left join syscity sc on p.City=sc.id
+    left join sysarea sa on p.County=sa.id left join sysstreet ss on p.Town=ss.id left join genetic_history gh on p.id=gh.id
+    <include refid="whereSql"></include>
+  </select>
+  <!-- 公共的查询条件 -->
+  <sql id="whereSql">
+  	<where>
+  		<if test="q!=null and q!=''">
+  			and (p.id like concat('%',#{q},'%') or p.healthcode like concat('%',#{q},'%') or p.name like concat('%',#{q},'%')
+  			or p.sex like concat('%',#{q},'%') or p.age like concat('%',#{q},'%')
+  			or p.phonenumber like concat('%',#{q},'%') or p.ID_Number like concat('%',#{q},'%'))
+  		</if>
+  		<if test="isPregnantwoman!=null and isPregnantwoman!=''">
+  			and p.IS_PregnantWoman = #{isPregnantwoman}
+  		</if>
+  		<if test="healthcode!=null and healthcode!=''">
+  			and p.healthCode = #{healthcode}
+  		</if>
+  		<if test="name!=null and name!=''">
+  			and p.Name = #{name}
+  		</if>
+  		<if test="age!=null and age!=''">
+  			and p.Age = #{age}
+  		</if>
+  		<if test="sex!=null and sex!=''">
+  			and p.Sex = #{sex}
+  		</if>
+  		<if test="begintime!=null and begintime!=''">
+  			and p.BirthDate &gt;= #{begintime}
+  		</if>
+  		<if test="endtime!=null and endtime!=''">
+  			and p.BirthDate &lt;= #{endtime}
+  		</if>
+  		<if test="profession!=null and profession!=''">
+  			and p.profession = #{profession}
+  		</if>
+  		<if test="familymembertype!=null and familymembertype!=''">
+  			and p.familyMemberType = #{familymembertype}
+  		</if>
+  		<if test="workunit!=null and workunit!=''">
+  			and p.workUnit = #{workunit}
+  		</if>
+  		<if test="phonenumber!=null and phonenumber!=''">
+  			and p.PhoneNumber = #{phonenumber}
+  		</if>
+  		<if test="wechat!=null and wechat!=''">
+  			and p.Wechat = #{wechat}
+  		</if>
+  		<if test="idNumber!=null and idNumber!=''">
+  			and p.ID_Number = #{idNumber}
+  		</if>
+  		<if test="isLocal!=null and isLocal!=''">
+  			and p.IS_local = #{isLocal}
+  		</if>
+  		<if test="birthcertificatenumber!=null and birthcertificatenumber!=''">
+  			and p.BirthCertificateNumber = #{birthcertificatenumber}
+  		</if>
+  		<if test="restaddress!=null and restaddress!=''">
+  			and p.RestAddress = #{restaddress}
+  		</if>
+  		<if test="isBirth!=null and isBirth!=''">
+  			and p.IS_Birth = #{isBirth}
+  		</if>
+  		<if test="marryhistory!=null and marryhistory!=''">
+  			and p.MarryHistory = #{marryhistory}
+  		</if>
+  	</where>
+  </sql>
+</mapper>

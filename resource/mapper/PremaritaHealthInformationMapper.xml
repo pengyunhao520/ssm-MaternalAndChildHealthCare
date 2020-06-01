@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PremaritaHealthInformationMapper">
+  <resultMap id="BaseResultMap" type="domain.PremaritaHealthInformation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="preidNumber" jdbcType="VARCHAR" property="preidnumber" />
+    <result column="preName" jdbcType="VARCHAR" property="prename" />
+    <result column="premaritalExaminationDate" jdbcType="DATE" property="premaritalexaminationdate" />
+    <result column="premaritalExaminationAddress" jdbcType="VARCHAR" property="premaritalexaminationaddress" />
+    <result column="consanguinity" jdbcType="VARCHAR" property="consanguinity" />
+    <result column="medicalHistory" jdbcType="VARCHAR" property="medicalhistory" />
+    <result column="nowMedicalHistory" jdbcType="VARCHAR" property="nowmedicalhistory" />
+    <result column="menarcheAge" jdbcType="INTEGER" property="menarcheage" />
+    <result column="menstrualCycle" jdbcType="INTEGER" property="menstrualcycle" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="pastMarriageHistory" jdbcType="VARCHAR" property="pastmarriagehistory" />
+    <result column="familyGeneticHistory" jdbcType="VARCHAR" property="familygenetichistory" />
+    <result column="familyMarriage" jdbcType="VARCHAR" property="familymarriage" />
+    <result column="specialPosture" jdbcType="VARCHAR" property="specialposture" />
+    <result column="mentalOutlook" jdbcType="VARCHAR" property="mentaloutlook" />
+    <result column="specialFace" jdbcType="VARCHAR" property="specialface" />
+    <result column="intelligence" jdbcType="VARCHAR" property="intelligence" />
+    <result column="skinHair" jdbcType="VARCHAR" property="skinhair" />
+    <result column="lung" jdbcType="VARCHAR" property="lung" />
+    <result column="liver" jdbcType="VARCHAR" property="liver" />
+    <result column="limbsSpine" jdbcType="VARCHAR" property="limbsspine" />
+    <result column="pubicHair" jdbcType="VARCHAR" property="pubichair" />
+    <result column="breast" jdbcType="VARCHAR" property="breast" />
+    <result column="genitals" jdbcType="VARCHAR" property="genitals" />
+    <result column="vaginalExamination" jdbcType="VARCHAR" property="vaginalexamination" />
+    <result column="laboratoryExamination" jdbcType="VARCHAR" property="laboratoryexamination" />
+    <result column="premaritalExamination" jdbcType="VARCHAR" property="premaritalexamination" />
+    <result column="medicalAdvice" jdbcType="VARCHAR" property="medicaladvice" />
+    <result column="consultationGuidance" jdbcType="VARCHAR" property="consultationguidance" />
+    <result column="folicBeginTime" jdbcType="DATE" property="folicbegintime" />
+    <result column="folicDetailsEndTime" jdbcType="DATE" property="folicdetailsendtime" />
+    <result column="iodinePillsBegintime" jdbcType="DATE" property="iodinepillsbegintime" />
+    <result column="iodinePillsDosage" jdbcType="INTEGER" property="iodinepillsdosage" />
+    <result column="consanguinityDetails" jdbcType="LONGVARCHAR" property="consanguinitydetails" />
+    <result column="medicalHistoryDetails" jdbcType="LONGVARCHAR" property="medicalhistorydetails" />
+    <result column="nowMedicalHistoryDetails" jdbcType="LONGVARCHAR" property="nowmedicalhistorydetails" />
+    <result column="menarcheAgeDetails" jdbcType="LONGVARCHAR" property="menarcheagedetails" />
+    <result column="menstrualCycleDetails" jdbcType="LONGVARCHAR" property="menstrualcycledetails" />
+    <result column="amountDetails" jdbcType="LONGVARCHAR" property="amountdetails" />
+    <result column="pastMarriageHistoryDetails" jdbcType="LONGVARCHAR" property="pastmarriagehistorydetails" />
+    <result column="familyGeneticHistoryDetails" jdbcType="LONGVARCHAR" property="familygenetichistorydetails" />
+    <result column="familyMarriageDetails" jdbcType="LONGVARCHAR" property="familymarriagedetails" />
+    <result column="specialPostureDetails" jdbcType="LONGVARCHAR" property="specialposturedetails" />
+    <result column="mentalOutlookDetails" jdbcType="LONGVARCHAR" property="mentaloutlookdetails" />
+    <result column="specialFaceDetails" jdbcType="LONGVARCHAR" property="specialfacedetails" />
+    <result column="intelligenceDetails" jdbcType="LONGVARCHAR" property="intelligencedetails" />
+    <result column="skinHairDetails" jdbcType="LONGVARCHAR" property="skinhairdetails" />
+    <result column="lungDetails" jdbcType="LONGVARCHAR" property="lungdetails" />
+    <result column="liverDetails" jdbcType="LONGVARCHAR" property="liverdetails" />
+    <result column="limbsSpineDetails" jdbcType="LONGVARCHAR" property="limbsspinedetails" />
+    <result column="pubicHairDetails" jdbcType="LONGVARCHAR" property="pubichairdetails" />
+    <result column="breastDetails" jdbcType="LONGVARCHAR" property="breastdetails" />
+    <result column="genitalsDetails" jdbcType="LONGVARCHAR" property="genitalsdetails" />
+    <result column="vaginalExaminationDetails" jdbcType="LONGVARCHAR" property="vaginalexaminationdetails" />
+    <result column="laboratoryExaminationDetails" jdbcType="LONGVARCHAR" property="laboratoryexaminationdetails" />
+    <result column="premaritalExaminationDetails" jdbcType="LONGVARCHAR" property="premaritalexaminationdetails" />
+    <result column="medicalAdviceDetails" jdbcType="LONGVARCHAR" property="medicaladvicedetails" />
+    <result column="consultationGuidanceDetails" jdbcType="LONGVARCHAR" property="consultationguidancedetails" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from premarital_health_information
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.PremaritaHealthInformation">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into premarital_health_information (preidNumber, preName, 
+      premaritalExaminationDate, premaritalExaminationAddress, 
+      consanguinity, medicalHistory, nowMedicalHistory, 
+      menarcheAge, menstrualCycle, amount, 
+      pastMarriageHistory, familyGeneticHistory, 
+      familyMarriage, specialPosture, mentalOutlook, 
+      specialFace, intelligence, skinHair, 
+      lung, liver, limbsSpine, 
+      pubicHair, breast, genitals, 
+      vaginalExamination, laboratoryExamination, 
+      premaritalExamination, medicalAdvice, consultationGuidance, 
+      folicBeginTime, folicDetailsEndTime, iodinePillsBegintime, 
+      iodinePillsDosage, consanguinityDetails, 
+      medicalHistoryDetails, nowMedicalHistoryDetails, 
+      menarcheAgeDetails, menstrualCycleDetails, 
+      amountDetails, pastMarriageHistoryDetails, 
+      familyGeneticHistoryDetails, familyMarriageDetails, 
+      specialPostureDetails, mentalOutlookDetails, 
+      specialFaceDetails, intelligenceDetails, 
+      skinHairDetails, lungDetails, liverDetails, 
+      limbsSpineDetails, pubicHairDetails, 
+      breastDetails, genitalsDetails, 
+      vaginalExaminationDetails, laboratoryExaminationDetails, 
+      premaritalExaminationDetails, medicalAdviceDetails, 
+      consultationGuidanceDetails)
+    values (#{preidnumber,jdbcType=VARCHAR}, #{prename,jdbcType=VARCHAR}, 
+      #{premaritalexaminationdate,jdbcType=DATE}, #{premaritalexaminationaddress,jdbcType=VARCHAR}, 
+      #{consanguinity,jdbcType=VARCHAR}, #{medicalhistory,jdbcType=VARCHAR}, #{nowmedicalhistory,jdbcType=VARCHAR}, 
+      #{menarcheage,jdbcType=INTEGER}, #{menstrualcycle,jdbcType=INTEGER}, #{amount,jdbcType=INTEGER}, 
+      #{pastmarriagehistory,jdbcType=VARCHAR}, #{familygenetichistory,jdbcType=VARCHAR}, 
+      #{familymarriage,jdbcType=VARCHAR}, #{specialposture,jdbcType=VARCHAR}, #{mentaloutlook,jdbcType=VARCHAR}, 
+      #{specialface,jdbcType=VARCHAR}, #{intelligence,jdbcType=VARCHAR}, #{skinhair,jdbcType=VARCHAR}, 
+      #{lung,jdbcType=VARCHAR}, #{liver,jdbcType=VARCHAR}, #{limbsspine,jdbcType=VARCHAR}, 
+      #{pubichair,jdbcType=VARCHAR}, #{breast,jdbcType=VARCHAR}, #{genitals,jdbcType=VARCHAR}, 
+      #{vaginalexamination,jdbcType=VARCHAR}, #{laboratoryexamination,jdbcType=VARCHAR}, 
+      #{premaritalexamination,jdbcType=VARCHAR}, #{medicaladvice,jdbcType=VARCHAR}, #{consultationguidance,jdbcType=VARCHAR}, 
+      #{folicbegintime,jdbcType=DATE}, #{folicdetailsendtime,jdbcType=DATE}, #{iodinepillsbegintime,jdbcType=DATE}, 
+      #{iodinepillsdosage,jdbcType=INTEGER}, #{consanguinitydetails,jdbcType=LONGVARCHAR}, 
+      #{medicalhistorydetails,jdbcType=LONGVARCHAR}, #{nowmedicalhistorydetails,jdbcType=LONGVARCHAR}, 
+      #{menarcheagedetails,jdbcType=LONGVARCHAR}, #{menstrualcycledetails,jdbcType=LONGVARCHAR}, 
+      #{amountdetails,jdbcType=LONGVARCHAR}, #{pastmarriagehistorydetails,jdbcType=LONGVARCHAR}, 
+      #{familygenetichistorydetails,jdbcType=LONGVARCHAR}, #{familymarriagedetails,jdbcType=LONGVARCHAR}, 
+      #{specialposturedetails,jdbcType=LONGVARCHAR}, #{mentaloutlookdetails,jdbcType=LONGVARCHAR}, 
+      #{specialfacedetails,jdbcType=LONGVARCHAR}, #{intelligencedetails,jdbcType=LONGVARCHAR}, 
+      #{skinhairdetails,jdbcType=LONGVARCHAR}, #{lungdetails,jdbcType=LONGVARCHAR}, #{liverdetails,jdbcType=LONGVARCHAR}, 
+      #{limbsspinedetails,jdbcType=LONGVARCHAR}, #{pubichairdetails,jdbcType=LONGVARCHAR}, 
+      #{breastdetails,jdbcType=LONGVARCHAR}, #{genitalsdetails,jdbcType=LONGVARCHAR}, 
+      #{vaginalexaminationdetails,jdbcType=LONGVARCHAR}, #{laboratoryexaminationdetails,jdbcType=LONGVARCHAR}, 
+      #{premaritalexaminationdetails,jdbcType=LONGVARCHAR}, #{medicaladvicedetails,jdbcType=LONGVARCHAR}, 
+      #{consultationguidancedetails,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.PremaritaHealthInformation">
+    update premarital_health_information
+    set preidNumber = #{preidnumber,jdbcType=VARCHAR},
+      preName = #{prename,jdbcType=VARCHAR},
+      premaritalExaminationDate = #{premaritalexaminationdate,jdbcType=DATE},
+      premaritalExaminationAddress = #{premaritalexaminationaddress,jdbcType=VARCHAR},
+      consanguinity = #{consanguinity,jdbcType=VARCHAR},
+      medicalHistory = #{medicalhistory,jdbcType=VARCHAR},
+      nowMedicalHistory = #{nowmedicalhistory,jdbcType=VARCHAR},
+      menarcheAge = #{menarcheage,jdbcType=INTEGER},
+      menstrualCycle = #{menstrualcycle,jdbcType=INTEGER},
+      amount = #{amount,jdbcType=INTEGER},
+      pastMarriageHistory = #{pastmarriagehistory,jdbcType=VARCHAR},
+      familyGeneticHistory = #{familygenetichistory,jdbcType=VARCHAR},
+      familyMarriage = #{familymarriage,jdbcType=VARCHAR},
+      specialPosture = #{specialposture,jdbcType=VARCHAR},
+      mentalOutlook = #{mentaloutlook,jdbcType=VARCHAR},
+      specialFace = #{specialface,jdbcType=VARCHAR},
+      intelligence = #{intelligence,jdbcType=VARCHAR},
+      skinHair = #{skinhair,jdbcType=VARCHAR},
+      lung = #{lung,jdbcType=VARCHAR},
+      liver = #{liver,jdbcType=VARCHAR},
+      limbsSpine = #{limbsspine,jdbcType=VARCHAR},
+      pubicHair = #{pubichair,jdbcType=VARCHAR},
+      breast = #{breast,jdbcType=VARCHAR},
+      genitals = #{genitals,jdbcType=VARCHAR},
+      vaginalExamination = #{vaginalexamination,jdbcType=VARCHAR},
+      laboratoryExamination = #{laboratoryexamination,jdbcType=VARCHAR},
+      premaritalExamination = #{premaritalexamination,jdbcType=VARCHAR},
+      medicalAdvice = #{medicaladvice,jdbcType=VARCHAR},
+      consultationGuidance = #{consultationguidance,jdbcType=VARCHAR},
+      folicBeginTime = #{folicbegintime,jdbcType=DATE},
+      folicDetailsEndTime = #{folicdetailsendtime,jdbcType=DATE},
+      iodinePillsBegintime = #{iodinepillsbegintime,jdbcType=DATE},
+      iodinePillsDosage = #{iodinepillsdosage,jdbcType=INTEGER},
+      consanguinityDetails = #{consanguinitydetails,jdbcType=LONGVARCHAR},
+      medicalHistoryDetails = #{medicalhistorydetails,jdbcType=LONGVARCHAR},
+      nowMedicalHistoryDetails = #{nowmedicalhistorydetails,jdbcType=LONGVARCHAR},
+      menarcheAgeDetails = #{menarcheagedetails,jdbcType=LONGVARCHAR},
+      menstrualCycleDetails = #{menstrualcycledetails,jdbcType=LONGVARCHAR},
+      amountDetails = #{amountdetails,jdbcType=LONGVARCHAR},
+      pastMarriageHistoryDetails = #{pastmarriagehistorydetails,jdbcType=LONGVARCHAR},
+      familyGeneticHistoryDetails = #{familygenetichistorydetails,jdbcType=LONGVARCHAR},
+      familyMarriageDetails = #{familymarriagedetails,jdbcType=LONGVARCHAR},
+      specialPostureDetails = #{specialposturedetails,jdbcType=LONGVARCHAR},
+      mentalOutlookDetails = #{mentaloutlookdetails,jdbcType=LONGVARCHAR},
+      specialFaceDetails = #{specialfacedetails,jdbcType=LONGVARCHAR},
+      intelligenceDetails = #{intelligencedetails,jdbcType=LONGVARCHAR},
+      skinHairDetails = #{skinhairdetails,jdbcType=LONGVARCHAR},
+      lungDetails = #{lungdetails,jdbcType=LONGVARCHAR},
+      liverDetails = #{liverdetails,jdbcType=LONGVARCHAR},
+      limbsSpineDetails = #{limbsspinedetails,jdbcType=LONGVARCHAR},
+      pubicHairDetails = #{pubichairdetails,jdbcType=LONGVARCHAR},
+      breastDetails = #{breastdetails,jdbcType=LONGVARCHAR},
+      genitalsDetails = #{genitalsdetails,jdbcType=LONGVARCHAR},
+      vaginalExaminationDetails = #{vaginalexaminationdetails,jdbcType=LONGVARCHAR},
+      laboratoryExaminationDetails = #{laboratoryexaminationdetails,jdbcType=LONGVARCHAR},
+      premaritalExaminationDetails = #{premaritalexaminationdetails,jdbcType=LONGVARCHAR},
+      medicalAdviceDetails = #{medicaladvicedetails,jdbcType=LONGVARCHAR},
+      consultationGuidanceDetails = #{consultationguidancedetails,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, preidNumber, preName, premaritalExaminationDate, premaritalExaminationAddress, 
+    consanguinity, medicalHistory, nowMedicalHistory, menarcheAge, menstrualCycle, amount, 
+    pastMarriageHistory, familyGeneticHistory, familyMarriage, specialPosture, mentalOutlook, 
+    specialFace, intelligence, skinHair, lung, liver, limbsSpine, pubicHair, breast, 
+    genitals, vaginalExamination, laboratoryExamination, premaritalExamination, medicalAdvice, 
+    consultationGuidance, folicBeginTime, folicDetailsEndTime, iodinePillsBegintime, 
+    iodinePillsDosage, consanguinityDetails, medicalHistoryDetails, nowMedicalHistoryDetails, 
+    menarcheAgeDetails, menstrualCycleDetails, amountDetails, pastMarriageHistoryDetails, 
+    familyGeneticHistoryDetails, familyMarriageDetails, specialPostureDetails, mentalOutlookDetails, 
+    specialFaceDetails, intelligenceDetails, skinHairDetails, lungDetails, liverDetails, 
+    limbsSpineDetails, pubicHairDetails, breastDetails, genitalsDetails, vaginalExaminationDetails, 
+    laboratoryExaminationDetails, premaritalExaminationDetails, medicalAdviceDetails, 
+    consultationGuidanceDetails
+    from premarital_health_information
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, preidNumber, preName, premaritalExaminationDate, premaritalExaminationAddress, 
+    consanguinity, medicalHistory, nowMedicalHistory, menarcheAge, menstrualCycle, amount, 
+    pastMarriageHistory, familyGeneticHistory, familyMarriage, specialPosture, mentalOutlook, 
+    specialFace, intelligence, skinHair, lung, liver, limbsSpine, pubicHair, breast, 
+    genitals, vaginalExamination, laboratoryExamination, premaritalExamination, medicalAdvice, 
+    consultationGuidance, folicBeginTime, folicDetailsEndTime, iodinePillsBegintime, 
+    iodinePillsDosage, consanguinityDetails, medicalHistoryDetails, nowMedicalHistoryDetails, 
+    menarcheAgeDetails, menstrualCycleDetails, amountDetails, pastMarriageHistoryDetails, 
+    familyGeneticHistoryDetails, familyMarriageDetails, specialPostureDetails, mentalOutlookDetails, 
+    specialFaceDetails, intelligenceDetails, skinHairDetails, lungDetails, liverDetails, 
+    limbsSpineDetails, pubicHairDetails, breastDetails, genitalsDetails, vaginalExaminationDetails, 
+    laboratoryExaminationDetails, premaritalExaminationDetails, medicalAdviceDetails, 
+    consultationGuidanceDetails
+    from premarital_health_information
+  </select>
+  
+  <!-- 根据preWomanidnumber查询所有 -->
+  <select id="selectAllByidnumber" resultMap="BaseResultMap">
+    select id, preidNumber, preName
+    from premarital_health_information where preidNumber = #{preidnumber,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 条件查询 -->
+  <select id="selectByQuery" parameterType="PremaritaHealthInformationQuery" resultMap="BaseResultMap">
+    select id, preidNumber, preName, premaritalExaminationDate, premaritalExaminationAddress, 
+    consanguinity, medicalHistory, nowMedicalHistory, menarcheAge, menstrualCycle, amount, 
+    pastMarriageHistory, familyGeneticHistory, familyMarriage, specialPosture, mentalOutlook, 
+    specialFace, intelligence, skinHair, lung, liver, limbsSpine, pubicHair, breast, 
+    genitals, vaginalExamination, laboratoryExamination, premaritalExamination, medicalAdvice, 
+    consultationGuidance, folicBeginTime, folicDetailsEndTime, iodinePillsBegintime, 
+    iodinePillsDosage, consanguinityDetails, medicalHistoryDetails, nowMedicalHistoryDetails, 
+    menarcheAgeDetails, menstrualCycleDetails, amountDetails, pastMarriageHistoryDetails, 
+    familyGeneticHistoryDetails, familyMarriageDetails, specialPostureDetails, mentalOutlookDetails, 
+    specialFaceDetails, intelligenceDetails, skinHairDetails, lungDetails, liverDetails, 
+    limbsSpineDetails, pubicHairDetails, breastDetails, genitalsDetails, vaginalExaminationDetails, 
+    laboratoryExaminationDetails, premaritalExaminationDetails, medicalAdviceDetails, 
+    consultationGuidanceDetails
+    from premarital_health_information
+    <include refid="whereSql"></include>
+  </select>
+   <!-- 公共条件查询 -->
+  <sql id="whereSql">
+  	<where>
+  		<if test="q!=null and q!=''">
+  			and (preidNumber like concat('%',#{q},'%') or preName like concat('%',#{q},'%') or
+  			premaritalExaminationAddress like concat('%',#{q},'%'))
+  		</if>
+  		<if test="premaritalexamination!=null and premaritalexamination!=''">
+  			and premaritalExamination = #{premaritalexamination}
+  		</if>
+  		<if test="medicalhistory!=null and medicalhistory!=''">
+  			and medicalHistory = #{medicalhistory}
+  		</if>
+  		<if test="menarcheage!=null and menarcheage!=''">
+  			and menarcheAge = #{menarcheage}
+  		</if>
+  		<if test="menstrualcycle!=null and menstrualcycle!=''">
+  			and menstrualCycle = #{menstrualcycle}
+  		</if>
+  		<if test="amount!=null and amount!=''">
+  			and amount = #{amount}
+  		</if>
+  		<if test="pastmarriagehistory!=null and pastmarriagehistory!=''">
+  			and pastMarriageHistory = #{pastmarriagehistory}
+  		</if>
+  		<if test="familygenetichistory!=null and familygenetichistory!=''">
+  			and familyGeneticHistory = #{familygenetichistory}
+  		</if>
+  		<if test="familymarriage!=null and familymarriage!=''">
+  			and familyMarriage = #{familymarriage}
+  		</if>
+  		<if test="specialposture!=null and specialposture!=''">
+  			and specialPosture = #{specialposture}
+  		</if>
+  		<if test="mentaloutlook!=null and mentaloutlook!=''">
+  			and mentalOutlook = #{mentaloutlook}
+  		</if>
+  		<if test="specialface!=null and specialface!=''">
+  			and specialFace = #{specialface}
+  		</if>
+  		<if test="intelligence!=null and intelligence!=''">
+  			and intelligence = #{intelligence}
+  		</if>
+  		<if test="skinhair!=null and skinhair!=''">
+  			and skinHair = #{skinhair}
+  		</if>
+  		<if test="lung!=null and lung!=''">
+  			and lung = #{lung}
+  		</if>
+  		<if test="liver!=null and liver!=''">
+  			and liver = #{liver}
+  		</if>
+  		<if test="limbsspine!=null and liver!=''">
+  			and limbsSpine = #{limbsspine}
+  		</if>
+  		<if test="pubichair!=null and pubichair!=''">
+  			and pubicHair = #{pubichair}
+  		</if>
+  		<if test="breast!=null and breast!=''">
+  			and breast = #{breast}
+  		</if>
+  		<if test="genitals!=null and genitals!=''">
+  			and genitals = #{genitals}
+  		</if>
+  	</where>
+  </sql>
+  
+</mapper>

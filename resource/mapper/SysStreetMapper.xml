@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.SysStreetMapper">
+  <resultMap id="BaseResultMap" type="domain.SysStreet">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="areaCode" jdbcType="VARCHAR" property="areacode" />
+    <result column="provinceCode" jdbcType="VARCHAR" property="provincecode" />
+    <result column="cityCode" jdbcType="VARCHAR" property="citycode" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sysstreet
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.SysStreet">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sysstreet (id, name, areaCode, 
+      provinceCode, cityCode)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{areacode,jdbcType=VARCHAR}, 
+      #{provincecode,jdbcType=VARCHAR}, #{citycode,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.SysStreet">
+    update sysstreet
+    set name = #{name,jdbcType=VARCHAR},
+      areaCode = #{areacode,jdbcType=VARCHAR},
+      provinceCode = #{provincecode,jdbcType=VARCHAR},
+      cityCode = #{citycode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, areaCode, provinceCode, cityCode
+    from sysstreet
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select distinct id, name, areaCode, provinceCode, cityCode
+    from sysstreet
+  </select>
+  
+  <!-- 根据countyid查询town -->
+  <select id="selectBycountyID" parameterType="String" resultMap="BaseResultMap">
+    select distinct id, name, areaCode, provinceCode, cityCode
+    from sysstreet
+    where areaCode = #{areaCode}
+  </select>
+</mapper>

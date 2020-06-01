@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AntenatalReviewSummaryMapper">
+  <resultMap id="BaseResultMap" type="domain.AntenatalReviewSummary">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="preidnumber" jdbcType="VARCHAR" property="preidnumber" />
+    <result column="prename" jdbcType="VARCHAR" property="prename" />
+    <result column="prephonenumber" jdbcType="VARCHAR" property="prephonenumber" />
+    <result column="healthcode" jdbcType="VARCHAR" property="healthcode" />
+    <result column="reviewcount" jdbcType="INTEGER" property="reviewcount" />
+    <result column="vaginalbleeding" jdbcType="VARCHAR" property="vaginalbleeding" />
+    <result column="pih" jdbcType="INTEGER" property="pih.id" />
+    <result column="urineprotein" jdbcType="VARCHAR" property="urineprotein" />
+    <result column="bmode" jdbcType="VARCHAR" property="bmode" />
+    <result column="highriskfactor" jdbcType="INTEGER" property="highriskfactor.id" />
+    <result column="highriskevaluate" jdbcType="VARCHAR" property="highriskevaluate" />
+    <result column="highriskchange" jdbcType="INTEGER" property="highriskchange.id" />
+    <!-- 20周临产 -->
+    <result column="previewcount" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.previewcount" />
+    <result column="ppih" jdbcType="VARCHAR" property="antenatalReviewSummaryParturient.ppih.id" />
+    <result column="placentaprevia" jdbcType="VARCHAR" property="antenatalReviewSummaryParturient.placentaprevia.id" />
+    <result column="placentalabruption" jdbcType="VARCHAR" property="antenatalReviewSummaryParturient.placentalabruption.id" />
+    <result column="fetalposition" jdbcType="VARCHAR" property="antenatalReviewSummaryParturient.fetalposition.id" />
+    <result column="multiplebirth" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.multiplebirth" />
+    <result column="amnioticfluid" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.amnioticfluid" />
+    <result column="pelvicstenosis" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.pelvicstenosis" />
+    <result column="developmentaldelay" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.developmentaldelay" />
+    <result column="fetaldistress" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.fetaldistress" />
+    <result column="heartdisease" jdbcType="VARCHAR" property="antenatalReviewSummaryParturient.heartdisease.id" />
+    <result column="viralhepatitis" jdbcType="VARCHAR" property="antenatalReviewSummaryParturient.viralhepatitis.id" />
+    <result column="purineprotein" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.purineprotein" />
+    <result column="hemoglobin" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.hemoglobin" />
+    <result column="phighriskevaluate" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.phighriskevaluate" />
+    <result column="phighriskchange" jdbcType="VARCHAR" property="antenatalReviewSummaryParturient.phighriskchange.id" />
+    <result column="additionalremarks" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.additionalremarks" />
+    <result column="summarydate" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.summarydate" />
+    <result column="fillperson" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.fillperson" />
+    <result column="inputperson" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.inputperson" />
+  	<!--13-17 字典 -->
+  	<result column="arspih" jdbcType="INTEGER" property="pih.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="highriskfactor.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="highriskchange.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.ppih.name" />
+  	
+  	<!-- 18-临产 字典 -->
+  	<result column="arspih" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.ppih.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.placentaprevia.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.placentalabruption.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.fetalposition.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.heartdisease.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.viralhepatitis.name" />
+  	<result column="arspih" jdbcType="INTEGER" property="antenatalReviewSummaryParturient.phighriskchange.name" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from antenatal_review_summary13_17
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.AntenatalReviewSummary">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into antenatal_review_summary13_17 ( preidnumber, prename, 
+      prephonenumber, healthcode, reviewcount, 
+      vaginalbleeding, pih, urineprotein, 
+      bmode, highriskfactor, highriskevaluate, 
+      highriskchange)
+    values ( #{preidnumber,jdbcType=VARCHAR}, #{prename,jdbcType=VARCHAR}, 
+      #{prephonenumber,jdbcType=VARCHAR}, #{healthcode,jdbcType=VARCHAR}, #{reviewcount,jdbcType=INTEGER}, 
+      #{vaginalbleeding,jdbcType=VARCHAR}, #{pih.id,jdbcType=INTEGER}, #{urineprotein,jdbcType=VARCHAR}, 
+      #{bmode,jdbcType=VARCHAR}, #{highriskfactor.id,jdbcType=INTEGER}, #{highriskevaluate,jdbcType=VARCHAR}, 
+      #{highriskchange.id,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.AntenatalReviewSummary">
+    update antenatal_review_summary13_17
+    set preidnumber = #{preidnumber,jdbcType=VARCHAR},
+      prename = #{prename,jdbcType=VARCHAR},
+      prephonenumber = #{prephonenumber,jdbcType=VARCHAR},
+      healthcode = #{healthcode,jdbcType=VARCHAR},
+      reviewcount = #{reviewcount,jdbcType=INTEGER},
+      vaginalbleeding = #{vaginalbleeding,jdbcType=VARCHAR},
+      pih = #{pih.id,jdbcType=INTEGER},
+      urineprotein = #{urineprotein,jdbcType=VARCHAR},
+      bmode = #{bmode,jdbcType=VARCHAR},
+      highriskfactor = #{highriskfactor.id,jdbcType=INTEGER},
+      highriskevaluate = #{highriskevaluate,jdbcType=VARCHAR},
+      highriskchange = #{highriskchange.id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, preidnumber, prename, prephonenumber, healthcode, reviewcount, vaginalbleeding, 
+    pih, urineprotein, bmode, highriskfactor, highriskevaluate, highriskchange
+    from antenatal_review_summary13_17
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, preidnumber, prename, prephonenumber, healthcode, reviewcount, vaginalbleeding, 
+    pih, urineprotein, bmode, highriskfactor, highriskevaluate, highriskchange
+    from antenatal_review_summary13_17
+  </select>
+  
+  <!-- 分页查询 -->
+  <select id="selectByQuery" parameterType="AntenatalReviewSummaryQuery" resultMap="BaseResultMap">
+    select ars.id, ars.preidnumber, ars.prename, ars.prephonenumber, ars.healthcode,
+    ars.reviewcount, ars.vaginalbleeding, ars.pih, ars.urineprotein, 
+    ars.bmode, ars.highriskfactor, ars.highriskevaluate, ars.highriskchange,
+    arsp.previewcount as previewcount,arsp.ppih as ppih,arsp.placentaprevia as placentaprevia,
+    arsp.placentalabruption as placentalabruption,arsp.fetalposition as fetalposition,
+    arsp.multiplebirth as multiplebirth,arsp.amnioticfluid as amnioticfluid,
+    arsp.pelvicstenosis as pelvicstenosis,arsp.developmentaldelay as developmentaldelay,
+    arsp.fetaldistress as fetaldistress,arsp.heartdisease as heartdisease,
+    arsp.viralhepatitis as viralhepatitis,arsp.purineprotein as purineprotein,
+    arsp.hemoglobin as hemoglobin,arsp.phighriskevaluate as phighriskevaluate,
+    arsp.phighriskchange as phighriskchange,arsp.additionalremarks as additionalremarks,
+    arsp.summarydate as summarydate,arsp.fillperson as fillperson,
+    arsp.inputperson as inputperson,d.id,d.name as arspih<!-- ,darsp.name as arsppid -->
+    from antenatal_review_summary13_17 ars left join antenatal_review_summary28_parturient arsp on ars.id=arsp.id
+    left join dictionarydetails d on ars.pih=d.id<!--  left join dictionarydetails darsp on arsp.ppih=d.id where ars.id=arsp.id -->
+  
+  	<include refid="whereSql"></include>
+  </select>
+  <!-- 公共查询条件 -->
+  <sql id="whereSql">
+  	<where>
+  		<if test="q!=null and q!=''">
+  			and (healthcode like concat('%',#{q},'%') or preidnumber like concat('%',#{q},'%') or
+  			prename like concat('%',#{q},'%') or prephonenumber like concat('%',#{q},'%'))
+  		</if>
+  		<if test="highriskevaluate!=null and highriskevaluate!=''">
+  			and ars.highriskevaluate = #{highriskevaluate}
+  		</if>
+  		<if test="reviewcount!=null and reviewcount!=''">
+  			and ars.reviewcount = #{reviewcount}
+  		</if>
+  		<if test="vaginalbleeding!=null and vaginalbleeding!=''">
+  			and ars.vaginalbleeding = #{vaginalbleeding}
+  		</if>
+  		<if test="urineprotein!=null and urineprotein!=''">
+  			and ars.urineprotein = #{urineprotein}
+  		</if>
+  		<if test="bmode!=null and bmode!=''">
+  			and ars.bmode = #{bmode}
+  		</if>
+  	</where>
+  </sql>
+</mapper>

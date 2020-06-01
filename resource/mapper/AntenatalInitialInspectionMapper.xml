@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AntenatalInitialInspectionMapper">
+  <resultMap id="BaseResultMap" type="domain.AntenatalInitialInspection">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="healthcode" jdbcType="VARCHAR" property="healthcode" />
+    <result column="peidnumber" jdbcType="VARCHAR" property="peidnumber" />
+    <result column="prename" jdbcType="VARCHAR" property="prename" />
+    <result column="prephonenumber" jdbcType="VARCHAR" property="prephonenumber" />
+    <result column="lastmenstruationdate" jdbcType="DATE" property="lastmenstruationdate" />
+    <result column="initialinspectionweek" jdbcType="INTEGER" property="initialinspectionweek" />
+    <result column="epectedchildbirthdate" jdbcType="DATE" property="epectedchildbirthdate" />
+    <result column="pegnantcount" jdbcType="INTEGER" property="pegnantcount" />
+    <result column="productioncount" jdbcType="INTEGER" property="productioncount" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="systolicpressure" jdbcType="INTEGER" property="systolicpressure" />
+    <result column="diastolicpressure" jdbcType="INTEGER" property="diastolicpressure" />
+    <result column="heart" jdbcType="VARCHAR" property="heart" />
+    <result column="lung" jdbcType="VARCHAR" property="lung" />
+    <result column="vaginitis" jdbcType="VARCHAR" property="vaginitis" />
+    <result column="cervicitis" jdbcType="VARCHAR" property="cervicitis" />
+    <result column="dublevaginaanduterus" jdbcType="VARCHAR" property="dublevaginaanduterus" />
+    <result column="myomauterus" jdbcType="VARCHAR" property="myomauterus" />
+    <result column="anexalmass" jdbcType="VARCHAR" property="anexalmass" />
+    <result column="uterussizeationalweek" jdbcType="VARCHAR" property="uterussizeationalweek" />
+    <result column="vaginalbleeding" jdbcType="VARCHAR" property="vaginalbleeding" />
+    <result column="vomiting" jdbcType="VARCHAR" property="vomiting" />
+    <result column="fever" jdbcType="VARCHAR" property="fever" />
+    <result column="viralinfection" jdbcType="VARCHAR" property="viralinfection" />
+    <result column="acyeterion" jdbcType="VARCHAR" property="acyeterion" />
+    <result column="urineprotein" jdbcType="VARCHAR" property="urineprotein" />
+    <result column="leucorrhea" jdbcType="VARCHAR" property="leucorrhea" />
+    <result column="bloodsugar" jdbcType="VARCHAR" property="bloodsugar" />
+    <result column="toxoplasma" jdbcType="VARCHAR" property="toxoplasma" />
+    <result column="alphafetoprotein" jdbcType="VARCHAR" property="alphafetoprotein" />
+    <result column="cytomegalovirus" jdbcType="VARCHAR" property="cytomegalovirus" />
+    <result column="GPTorALT" jdbcType="VARCHAR" property="gptoralt" />
+    <result column="rubellavirus" jdbcType="VARCHAR" property="rubellavirus" />
+    <result column="hbsag" jdbcType="VARCHAR" property="hbsag" />
+    <result column="syphilis" jdbcType="VARCHAR" property="syphilis" />
+    <result column="bloodtype" jdbcType="VARCHAR" property="bloodtype" />
+    <result column="highriskevaluate" jdbcType="VARCHAR" property="highriskevaluate" />
+    <result column="anteriorsuperiorspine" jdbcType="INTEGER" property="anteriorsuperiorspine" />
+    <result column="Anterioriliac" jdbcType="INTEGER" property="anterioriliac" />
+    <result column="sacroiliacexternaldiameter" jdbcType="INTEGER" property="sacroiliacexternaldiameter" />
+    <result column="sciatictubercle" jdbcType="INTEGER" property="sciatictubercle" />
+    <result column="checkdate" jdbcType="DATE" property="checkdate" />
+    <result column="fillperson" jdbcType="VARCHAR" property="fillperson" />
+    <result column="inputperson" jdbcType="VARCHAR" property="inputperson" />
+    <result column="heartdetails" jdbcType="LONGVARCHAR" property="heartdetails" />
+    <result column="lungdetails" jdbcType="LONGVARCHAR" property="lungdetails" />
+    <result column="vaginitisdetails" jdbcType="LONGVARCHAR" property="vaginitisdetails" />
+    <result column="cervicitisdetails" jdbcType="LONGVARCHAR" property="cervicitisdetails" />
+    <result column="dublevaginaanduterusdetails" jdbcType="LONGVARCHAR" property="dublevaginaanduterusdetails" />
+    <result column="myomauterusdetails" jdbcType="LONGVARCHAR" property="myomauterusdetails" />
+    <result column="aexalmassdetails" jdbcType="LONGVARCHAR" property="aexalmassdetails" />
+    <result column="uterussizeationalweekdetails" jdbcType="LONGVARCHAR" property="uterussizeationalweekdetails" />
+    <result column="otherquestions" jdbcType="LONGVARCHAR" property="otherquestions" />
+    <result column="othercheckdetails" jdbcType="LONGVARCHAR" property="othercheckdetails" />
+    <result column="highriskdetails" jdbcType="LONGVARCHAR" property="highriskdetails" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from antenatal_initial_inspection
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.AntenatalInitialInspection">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into antenatal_initial_inspection ( peidnumber, 
+      prename, prephonenumber, healthcode, lastmenstruationdate, 
+      initialinspectionweek, epectedchildbirthdate, 
+      pegnantcount, productioncount, height, 
+      weight, systolicpressure, diastolicpressure, 
+      heart, lung, vaginitis, 
+      cervicitis, dublevaginaanduterus, myomauterus, 
+      anexalmass, uterussizeationalweek, vaginalbleeding, 
+      vomiting, fever, viralinfection, 
+      acyeterion, urineprotein, leucorrhea, 
+      bloodsugar, toxoplasma, alphafetoprotein, 
+      cytomegalovirus, GPTorALT, rubellavirus, 
+      hbsag, syphilis, bloodtype, 
+      highriskevaluate, anteriorsuperiorspine, 
+      Anterioriliac, sacroiliacexternaldiameter, 
+      sciatictubercle, checkdate, fillperson, 
+      inputperson, heartdetails, lungdetails, 
+      vaginitisdetails, cervicitisdetails, 
+      dublevaginaanduterusdetails, myomauterusdetails, 
+      aexalmassdetails, uterussizeationalweekdetails, 
+      otherquestions, othercheckdetails, 
+      highriskdetails)
+    values ( #{peidnumber,jdbcType=VARCHAR}, #{prename,jdbcType=VARCHAR},
+      #{prephonenumber,jdbcType=VARCHAR},#{healthcode,jdbcType=VARCHAR}, #{lastmenstruationdate,jdbcType=DATE}, 
+      #{initialinspectionweek,jdbcType=INTEGER}, #{epectedchildbirthdate,jdbcType=DATE}, 
+      #{pegnantcount,jdbcType=INTEGER}, #{productioncount,jdbcType=INTEGER}, #{height,jdbcType=INTEGER}, 
+      #{weight,jdbcType=INTEGER}, #{systolicpressure,jdbcType=INTEGER}, #{diastolicpressure,jdbcType=INTEGER}, 
+      #{heart,jdbcType=VARCHAR}, #{lung,jdbcType=VARCHAR}, #{vaginitis,jdbcType=VARCHAR}, 
+      #{cervicitis,jdbcType=VARCHAR}, #{dublevaginaanduterus,jdbcType=VARCHAR}, #{myomauterus,jdbcType=VARCHAR}, 
+      #{anexalmass,jdbcType=VARCHAR}, #{uterussizeationalweek,jdbcType=VARCHAR}, #{vaginalbleeding,jdbcType=VARCHAR}, 
+      #{vomiting,jdbcType=VARCHAR}, #{fever,jdbcType=VARCHAR}, #{viralinfection,jdbcType=VARCHAR}, 
+      #{acyeterion,jdbcType=VARCHAR}, #{urineprotein,jdbcType=VARCHAR}, #{leucorrhea,jdbcType=VARCHAR}, 
+      #{bloodsugar,jdbcType=VARCHAR}, #{toxoplasma,jdbcType=VARCHAR}, #{alphafetoprotein,jdbcType=VARCHAR}, 
+      #{cytomegalovirus,jdbcType=VARCHAR}, #{gptoralt,jdbcType=VARCHAR}, #{rubellavirus,jdbcType=VARCHAR}, 
+      #{hbsag,jdbcType=VARCHAR}, #{syphilis,jdbcType=VARCHAR}, #{bloodtype,jdbcType=VARCHAR}, 
+      #{highriskevaluate,jdbcType=VARCHAR}, #{anteriorsuperiorspine,jdbcType=INTEGER}, 
+      #{anterioriliac,jdbcType=INTEGER}, #{sacroiliacexternaldiameter,jdbcType=INTEGER}, 
+      #{sciatictubercle,jdbcType=INTEGER}, #{checkdate,jdbcType=DATE}, #{fillperson,jdbcType=VARCHAR}, 
+      #{inputperson,jdbcType=VARCHAR}, #{heartdetails,jdbcType=LONGVARCHAR}, #{lungdetails,jdbcType=LONGVARCHAR}, 
+      #{vaginitisdetails,jdbcType=LONGVARCHAR}, #{cervicitisdetails,jdbcType=LONGVARCHAR}, 
+      #{dublevaginaanduterusdetails,jdbcType=LONGVARCHAR}, #{myomauterusdetails,jdbcType=LONGVARCHAR}, 
+      #{aexalmassdetails,jdbcType=LONGVARCHAR}, #{uterussizeationalweekdetails,jdbcType=LONGVARCHAR}, 
+      #{otherquestions,jdbcType=LONGVARCHAR}, #{othercheckdetails,jdbcType=LONGVARCHAR}, 
+      #{highriskdetails,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.AntenatalInitialInspection">
+    update antenatal_initial_inspection
+    set peidnumber = #{peidnumber,jdbcType=VARCHAR},
+      prename = #{prename,jdbcType=VARCHAR},
+      prephonenumber = #{prephonenumber,jdbcType=VARCHAR},
+      healthcode = #{healthcode,jdbcType=VARCHAR},
+      lastmenstruationdate = #{lastmenstruationdate,jdbcType=DATE},
+      initialinspectionweek = #{initialinspectionweek,jdbcType=INTEGER},
+      epectedchildbirthdate = #{epectedchildbirthdate,jdbcType=DATE},
+      pegnantcount = #{pegnantcount,jdbcType=INTEGER},
+      productioncount = #{productioncount,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      systolicpressure = #{systolicpressure,jdbcType=INTEGER},
+      diastolicpressure = #{diastolicpressure,jdbcType=INTEGER},
+      heart = #{heart,jdbcType=VARCHAR},
+      lung = #{lung,jdbcType=VARCHAR},
+      vaginitis = #{vaginitis,jdbcType=VARCHAR},
+      cervicitis = #{cervicitis,jdbcType=VARCHAR},
+      dublevaginaanduterus = #{dublevaginaanduterus,jdbcType=VARCHAR},
+      myomauterus = #{myomauterus,jdbcType=VARCHAR},
+      anexalmass = #{anexalmass,jdbcType=VARCHAR},
+      uterussizeationalweek = #{uterussizeationalweek,jdbcType=VARCHAR},
+      vaginalbleeding = #{vaginalbleeding,jdbcType=VARCHAR},
+      vomiting = #{vomiting,jdbcType=VARCHAR},
+      fever = #{fever,jdbcType=VARCHAR},
+      viralinfection = #{viralinfection,jdbcType=VARCHAR},
+      acyeterion = #{acyeterion,jdbcType=VARCHAR},
+      urineprotein = #{urineprotein,jdbcType=VARCHAR},
+      leucorrhea = #{leucorrhea,jdbcType=VARCHAR},
+      bloodsugar = #{bloodsugar,jdbcType=VARCHAR},
+      toxoplasma = #{toxoplasma,jdbcType=VARCHAR},
+      alphafetoprotein = #{alphafetoprotein,jdbcType=VARCHAR},
+      cytomegalovirus = #{cytomegalovirus,jdbcType=VARCHAR},
+      GPTorALT = #{gptoralt,jdbcType=VARCHAR},
+      rubellavirus = #{rubellavirus,jdbcType=VARCHAR},
+      hbsag = #{hbsag,jdbcType=VARCHAR},
+      syphilis = #{syphilis,jdbcType=VARCHAR},
+      bloodtype = #{bloodtype,jdbcType=VARCHAR},
+      highriskevaluate = #{highriskevaluate,jdbcType=VARCHAR},
+      anteriorsuperiorspine = #{anteriorsuperiorspine,jdbcType=INTEGER},
+      Anterioriliac = #{anterioriliac,jdbcType=INTEGER},
+      sacroiliacexternaldiameter = #{sacroiliacexternaldiameter,jdbcType=INTEGER},
+      sciatictubercle = #{sciatictubercle,jdbcType=INTEGER},
+      checkdate = #{checkdate,jdbcType=DATE},
+      fillperson = #{fillperson,jdbcType=VARCHAR},
+      inputperson = #{inputperson,jdbcType=VARCHAR},
+      heartdetails = #{heartdetails,jdbcType=LONGVARCHAR},
+      lungdetails = #{lungdetails,jdbcType=LONGVARCHAR},
+      vaginitisdetails = #{vaginitisdetails,jdbcType=LONGVARCHAR},
+      cervicitisdetails = #{cervicitisdetails,jdbcType=LONGVARCHAR},
+      dublevaginaanduterusdetails = #{dublevaginaanduterusdetails,jdbcType=LONGVARCHAR},
+      myomauterusdetails = #{myomauterusdetails,jdbcType=LONGVARCHAR},
+      aexalmassdetails = #{aexalmassdetails,jdbcType=LONGVARCHAR},
+      uterussizeationalweekdetails = #{uterussizeationalweekdetails,jdbcType=LONGVARCHAR},
+      otherquestions = #{otherquestions,jdbcType=LONGVARCHAR},
+      othercheckdetails = #{othercheckdetails,jdbcType=LONGVARCHAR},
+      highriskdetails = #{highriskdetails,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, healthcode, peidnumber, prename, prephonenumber, lastmenstruationdate, 
+    initialinspectionweek, epectedchildbirthdate, pegnantcount, productioncount, height, 
+    weight, systolicpressure, diastolicpressure, heart, lung, vaginitis, cervicitis, 
+    dublevaginaanduterus, myomauterus, anexalmass, uterussizeationalweek, vaginalbleeding, 
+    vomiting, fever, viralinfection, acyeterion, urineprotein, leucorrhea, bloodsugar, 
+    toxoplasma, alphafetoprotein, cytomegalovirus, GPTorALT, rubellavirus, hbsag, syphilis, 
+    bloodtype, highriskevaluate, anteriorsuperiorspine, Anterioriliac, sacroiliacexternaldiameter, 
+    sciatictubercle, checkdate, fillperson, inputperson, heartdetails, lungdetails, vaginitisdetails, 
+    cervicitisdetails, dublevaginaanduterusdetails, myomauterusdetails, aexalmassdetails, 
+    uterussizeationalweekdetails, otherquestions, othercheckdetails, highriskdetails
+    from antenatal_initial_inspection
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+   <!-- 根据preWomanidnumber查询所有 -->
+  <select id="selectAllByidnumber" resultMap="BaseResultMap">
+    select id,healthcode, peidnumber, prename,prephonenumber
+    from antenatal_initial_inspection where peidnumber = #{preidnumber,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, healthcode, peidnumber, prename, prephonenumber, lastmenstruationdate, 
+    initialinspectionweek, epectedchildbirthdate, pegnantcount, productioncount, height, 
+    weight, systolicpressure, diastolicpressure, heart, lung, vaginitis, cervicitis, 
+    dublevaginaanduterus, myomauterus, anexalmass, uterussizeationalweek, vaginalbleeding, 
+    vomiting, fever, viralinfection, acyeterion, urineprotein, leucorrhea, bloodsugar, 
+    toxoplasma, alphafetoprotein, cytomegalovirus, GPTorALT, rubellavirus, hbsag, syphilis, 
+    bloodtype, highriskevaluate, anteriorsuperiorspine, Anterioriliac, sacroiliacexternaldiameter, 
+    sciatictubercle, checkdate, fillperson, inputperson, heartdetails, lungdetails, vaginitisdetails, 
+    cervicitisdetails, dublevaginaanduterusdetails, myomauterusdetails, aexalmassdetails, 
+    uterussizeationalweekdetails, otherquestions, othercheckdetails, highriskdetails
+    from antenatal_initial_inspection
+  </select>
+  
+  <!-- 条件查询 -->
+  <select id="selectByQuery" parameterType="AntenatalInitialInspectionQuery" resultMap="BaseResultMap">
+    select id, healthcode, peidnumber, prename, prephonenumber, lastmenstruationdate, 
+    initialinspectionweek, epectedchildbirthdate, pegnantcount, productioncount, height, 
+    weight, systolicpressure, diastolicpressure, heart, lung, vaginitis, cervicitis, 
+    dublevaginaanduterus, myomauterus, anexalmass, uterussizeationalweek, vaginalbleeding, 
+    vomiting, fever, viralinfection, acyeterion, urineprotein, leucorrhea, bloodsugar, 
+    toxoplasma, alphafetoprotein, cytomegalovirus, GPTorALT, rubellavirus, hbsag, syphilis, 
+    bloodtype, highriskevaluate, anteriorsuperiorspine, Anterioriliac, sacroiliacexternaldiameter, 
+    sciatictubercle, checkdate, fillperson, inputperson, heartdetails, lungdetails, vaginitisdetails, 
+    cervicitisdetails, dublevaginaanduterusdetails, myomauterusdetails, aexalmassdetails, 
+    uterussizeationalweekdetails, otherquestions, othercheckdetails, highriskdetails
+    from antenatal_initial_inspection
+    <include refid="whereSql"></include>
+  </select>
+   <!-- 公共条件查询 -->
+  <sql id="whereSql">
+  	<where>
+  		<if test="q!=null and q!=''">
+  			and (healthcode like concat('%',#{q},'%') or peidnumber like concat('%',#{q},'%') or
+  			prename like concat('%',#{q},'%') or prephonenumber like concat('%',#{q},'%') or 
+  			fillperson like concat('%',#{q},'%') or inputperson like concat('%',#{q},'%') or
+  			highriskevaluate like concat('%',#{q},'%'))
+  		</if>
+  		<if test="epectedchildbirthdate!=null and epectedchildbirthdate!=''">
+  			and epectedchildbirthdate = #{epectedchildbirthdate}
+  		</if>
+  		<if test="pegnantcount!=null and pegnantcount!=''">
+  			and pegnantcount = #{pegnantcount}
+  		</if>
+  		<if test="productioncount!=null and productioncount!=''">
+  			and productioncount = #{productioncount}
+  		</if>
+  		<if test="vaginitis!=null and vaginitis!=''">
+  			and vaginitis = #{vaginitis}
+  		</if>
+  		<if test="cervicitis!=null and cervicitis!=''">
+  			and cervicitis = #{cervicitis}
+  		</if>
+  		<if test="myomauterus!=null and myomauterus!=''">
+  			and myomauterus = #{myomauterus}
+  		</if>
+  		<if test="anexalmass!=null and anexalmass!=''">
+  			and anexalmass = #{anexalmass}
+  		</if>
+  		<if test="vaginalbleeding!=null and vaginalbleeding!=''">
+  			and vaginalbleeding = #{vaginalbleeding}
+  		</if>
+  		<if test="vomiting !=null and vomiting!=''">
+  			and vomiting  = #{vomiting }
+  		</if>
+  		<if test="viralinfection!=null and viralinfection!=''">
+  			and viralinfection = #{viralinfection}
+  		</if>
+  		<if test="urineprotein!=null and urineprotein!=''">
+  			and urineprotein = #{urineprotein}
+  		</if>
+  		<if test="leucorrhea!=null and leucorrhea!=''">
+  			and leucorrhea = #{leucorrhea}
+  		</if>
+  		<if test="bloodsugar!=null and bloodsugar!=''">
+  			and bloodsugar = #{bloodsugar}
+  		</if>
+  		<if test="alphafetoprotein!=null and alphafetoprotein!=''">
+  			and alphafetoprotein = #{alphafetoprotein}
+  		</if>
+  		<if test="cytomegalovirus!=null and cytomegalovirus!=''">
+  			and cytomegalovirus = #{cytomegalovirus}
+  		</if>
+  		<if test="gptoralt!=null and gptoralt!=''">
+  			and GPTorALT = #{gptoralt}
+  		</if>
+  		<if test="hbsag!=null and hbsag!=''">
+  			and hbsag = #{hbsag}
+  		</if>
+  		<if test="syphilis!=null and syphilis!=''">
+  			and syphilis = #{syphilis}
+  		</if>
+  		<if test="bloodtype!=null and bloodtype!=''">
+  			and bloodtype = #{bloodtype}
+  		</if>
+  		<if test="highriskevaluate!=null and highriskevaluate!=''">
+  			and highriskevaluate = #{highriskevaluate}
+  		</if>
+  		<if test="begintime!=null and begintime!=''">
+  			and epectedchildbirthdate &gt;= #{begintime}
+  		</if>
+  		<if test="endtime!=null and endtime!=''">
+  			and epectedchildbirthdate &lt;= #{endtime}
+  		</if>
+  	</where>
+  </sql>
+</mapper>

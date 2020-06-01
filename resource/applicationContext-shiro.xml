@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 核心对象SecuriyManager -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="LzRealm" />
+	</bean>
+	
+	<!-- 自定义一个Realm -->
+	<bean id="LzRealm" class="shiro.realm.LzRealm">
+		<!-- 比较器 -->
+		<property name="credentialsMatcher">
+			<bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+				<!-- 加密算法 -->
+				<property name="hashAlgorithmName" value="MD5"/>
+				<!-- 加密次数 -->
+				<property name="hashIterations" value="2000"></property>
+			</bean>
+		</property>
+	</bean>
+
+
+	<!-- 权限过滤器 -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login.jsp" />
+		<property name="successUrl" value="/main" />
+		<property name="unauthorizedUrl" value="/unauthorized.jsp" />
+		<property name="filterChainDefinitionMap" ref="filterChainMap"></property>
+		<!-- 配置自定义的过滤器 -->
+		<property name="filters">
+			<map>
+				<entry key="lzPerms">
+					<bean class="shiro.filter.LzAuthorizationFilter"></bean>
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+	<!-- 工厂bean -->
+	<bean id="filterChainMapFactory" class="shiro.factory.FilterChainMapFactory"></bean>
+	<bean id="filterChainMap" factory-bean="filterChainMapFactory" factory-method="getFileterChainMap"></bean>
+</beans>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.GeneticHistoryMapper">
+  <resultMap id="BaseResultMap" type="domain.GeneticHistory">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="psychosis" jdbcType="CHAR" property="psychosis" />
+    <result column="dementia" jdbcType="CHAR" property="dementia" />
+    <result column="malformation" jdbcType="CHAR" property="malformation" />
+    <result column="geneticdisease" jdbcType="CHAR" property="geneticdisease" />
+    <result column="psychosisdescribe" jdbcType="LONGVARCHAR" property="psychosisdescribe" />
+    <result column="dementiadescribe" jdbcType="LONGVARCHAR" property="dementiadescribe" />
+    <result column="malformationdescribe" jdbcType="LONGVARCHAR" property="malformationdescribe" />
+    <result column="geneticdiseasedescribe" jdbcType="LONGVARCHAR" property="geneticdiseasedescribe" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from genetic_history
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.GeneticHistory">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into genetic_history (id, psychosis, dementia, 
+      malformation, geneticdisease, psychosisdescribe, 
+      dementiadescribe, malformationdescribe, 
+      geneticdiseasedescribe)
+    values (#{id,jdbcType=INTEGER}, #{psychosis,jdbcType=CHAR}, #{dementia,jdbcType=CHAR}, 
+      #{malformation,jdbcType=CHAR}, #{geneticdisease,jdbcType=CHAR}, #{psychosisdescribe,jdbcType=LONGVARCHAR}, 
+      #{dementiadescribe,jdbcType=LONGVARCHAR}, #{malformationdescribe,jdbcType=LONGVARCHAR}, 
+      #{geneticdiseasedescribe,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.GeneticHistory">
+    update genetic_history
+    set psychosis = #{psychosis,jdbcType=CHAR},
+      dementia = #{dementia,jdbcType=CHAR},
+      malformation = #{malformation,jdbcType=CHAR},
+      geneticdisease = #{geneticdisease,jdbcType=CHAR},
+      psychosisdescribe = #{psychosisdescribe,jdbcType=LONGVARCHAR},
+      dementiadescribe = #{dementiadescribe,jdbcType=LONGVARCHAR},
+      malformationdescribe = #{malformationdescribe,jdbcType=LONGVARCHAR},
+      geneticdiseasedescribe = #{geneticdiseasedescribe,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, psychosis, dementia, malformation, geneticdisease, psychosisdescribe, 
+    dementiadescribe, malformationdescribe, geneticdiseasedescribe
+    from genetic_history
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, psychosis, dementia, malformation, geneticdisease, psychosisdescribe, 
+    dementiadescribe, malformationdescribe, geneticdiseasedescribe
+    from genetic_history
+  </select>
+</mapper>

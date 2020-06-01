@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.SysAreaMapper">
+  <resultMap id="BaseResultMap" type="domain.SysArea">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cityCode" jdbcType="VARCHAR" property="citycode" />
+    <result column="provinceCode" jdbcType="VARCHAR" property="provincecode" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from sysarea
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.SysArea">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sysarea (id, name, cityCode, 
+      provinceCode)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{citycode,jdbcType=VARCHAR}, 
+      #{provincecode,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.SysArea">
+    update sysarea
+    set name = #{name,jdbcType=VARCHAR},
+      cityCode = #{citycode,jdbcType=VARCHAR},
+      provinceCode = #{provincecode,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, cityCode, provinceCode
+    from sysarea
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select distinct id, name, cityCode, provinceCode
+    from sysarea
+  </select>
+  
+  <!-- 根据cityid查询area -->
+  <select id="selectByCityID" parameterType="String" resultMap="BaseResultMap">
+     select distinct id, name, cityCode, provinceCode
+    from sysarea
+    where cityCode = #{cityCode}
+  </select>
+</mapper>

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.NewbornSituationMapper">
+  <resultMap id="BaseResultMap" type="domain.NewbornSituation">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="birthOrder" jdbcType="VARCHAR" property="birthorder" />
+    <result column="birthDate" jdbcType="TIMESTAMP" property="birthdate" />
+    <result column="ApgarFive" jdbcType="VARCHAR" property="apgarfive" />
+    <result column="birthDefect" jdbcType="VARCHAR" property="birthdefect" />
+    <result column="pathologicJaundice" jdbcType="VARCHAR" property="pathologicjaundice" />
+    <result column="respiratoryDistress" jdbcType="VARCHAR" property="respiratorydistress" />
+    <result column="deliveryPosition" jdbcType="VARCHAR" property="deliveryposition" />
+    <result column="modeOfDelivery" jdbcType="VARCHAR" property="modeofdelivery" />
+    <result column="pneumonia" jdbcType="VARCHAR" property="pneumonia" />
+    <result column="scleroma" jdbcType="VARCHAR" property="scleroma" />
+    <result column="birthInjury" jdbcType="VARCHAR" property="birthinjury" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="encephalopathyHIE" jdbcType="VARCHAR" property="encephalopathyhie" />
+    <result column="umbilicalInfection" jdbcType="VARCHAR" property="umbilicalinfection" />
+    <result column="externalGenitalOrgans" jdbcType="VARCHAR" property="externalgenitalorgans" />
+    <result column="septicemia" jdbcType="VARCHAR" property="septicemia" />
+    <result column="tetanus" jdbcType="VARCHAR" property="tetanus" />
+    <result column="indigestion" jdbcType="VARCHAR" property="indigestion" />
+    <result column="weight" jdbcType="DOUBLE" property="weight" />
+    <result column="height" jdbcType="DOUBLE" property="height" />
+    <result column="birthOutcomes" jdbcType="VARCHAR" property="birthoutcomes" />
+    <result column="neonatalSurvival" jdbcType="VARCHAR" property="neonatalsurvival" />
+    <result column="stillbirthCause" jdbcType="VARCHAR" property="stillbirthcause" />
+    <result column="neonatalDeathCause" jdbcType="VARCHAR" property="neonataldeathcause" />
+    <result column="ApgaOne" jdbcType="VARCHAR" property="apgaone" />
+    <result column="breastFeeding" jdbcType="VARCHAR" property="breastfeeding" />
+    <result column="neonatalScreening" jdbcType="VARCHAR" property="neonatalscreening" />
+    <result column="filler" jdbcType="VARCHAR" property="filler" />
+    <result column="enter" jdbcType="VARCHAR" property="enter" />
+    <result column="deliveryPositionDetails" jdbcType="LONGVARCHAR" property="deliverypositiondetails" />
+    <result column="modeOfDeliveryDetails" jdbcType="LONGVARCHAR" property="modeofdeliverydetails" />
+    <result column="birthInjuryDetails" jdbcType="LONGVARCHAR" property="birthinjurydetails" />
+    <result column="birthOutcomesDetails" jdbcType="LONGVARCHAR" property="birthoutcomesdetails" />
+    <result column="stillbirthCauseDetails" jdbcType="LONGVARCHAR" property="stillbirthcausedetails" />
+    <result column="neonatalScreeningDetails" jdbcType="LONGVARCHAR" property="neonatalscreeningdetails" />
+    <result column="healthGuidance" jdbcType="LONGVARCHAR" property="healthguidance" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from newborn_situation
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.NewbornSituation">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into newborn_situation (id, birthOrder, birthDate, 
+      ApgarFive, birthDefect, pathologicJaundice, 
+      respiratoryDistress, deliveryPosition, 
+      modeOfDelivery, pneumonia, scleroma, 
+      birthInjury, sex, encephalopathyHIE, 
+      umbilicalInfection, externalGenitalOrgans, 
+      septicemia, tetanus, indigestion, 
+      weight, height, birthOutcomes, 
+      neonatalSurvival, stillbirthCause, neonatalDeathCause, 
+      ApgaOne, breastFeeding, neonatalScreening, 
+      filler, enter, deliveryPositionDetails, 
+      modeOfDeliveryDetails, birthInjuryDetails, 
+      birthOutcomesDetails, stillbirthCauseDetails, 
+      neonatalScreeningDetails, healthGuidance
+      )
+    values (#{id,jdbcType=INTEGER}, #{birthorder,jdbcType=VARCHAR}, #{birthdate,jdbcType=TIMESTAMP}, 
+      #{apgarfive,jdbcType=VARCHAR}, #{birthdefect,jdbcType=VARCHAR}, #{pathologicjaundice,jdbcType=VARCHAR}, 
+      #{respiratorydistress,jdbcType=VARCHAR}, #{deliveryposition,jdbcType=VARCHAR}, 
+      #{modeofdelivery,jdbcType=VARCHAR}, #{pneumonia,jdbcType=VARCHAR}, #{scleroma,jdbcType=VARCHAR}, 
+      #{birthinjury,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, #{encephalopathyhie,jdbcType=VARCHAR}, 
+      #{umbilicalinfection,jdbcType=VARCHAR}, #{externalgenitalorgans,jdbcType=VARCHAR}, 
+      #{septicemia,jdbcType=VARCHAR}, #{tetanus,jdbcType=VARCHAR}, #{indigestion,jdbcType=VARCHAR}, 
+      #{weight,jdbcType=DOUBLE}, #{height,jdbcType=DOUBLE}, #{birthoutcomes,jdbcType=VARCHAR}, 
+      #{neonatalsurvival,jdbcType=VARCHAR}, #{stillbirthcause,jdbcType=VARCHAR}, #{neonataldeathcause,jdbcType=VARCHAR}, 
+      #{apgaone,jdbcType=VARCHAR}, #{breastfeeding,jdbcType=VARCHAR}, #{neonatalscreening,jdbcType=VARCHAR}, 
+      #{filler,jdbcType=VARCHAR}, #{enter,jdbcType=VARCHAR}, #{deliverypositiondetails,jdbcType=LONGVARCHAR}, 
+      #{modeofdeliverydetails,jdbcType=LONGVARCHAR}, #{birthinjurydetails,jdbcType=LONGVARCHAR}, 
+      #{birthoutcomesdetails,jdbcType=LONGVARCHAR}, #{stillbirthcausedetails,jdbcType=LONGVARCHAR}, 
+      #{neonatalscreeningdetails,jdbcType=LONGVARCHAR}, #{healthguidance,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.NewbornSituation">
+    update newborn_situation
+    set birthOrder = #{birthorder,jdbcType=VARCHAR},
+      birthDate = #{birthdate,jdbcType=TIMESTAMP},
+      ApgarFive = #{apgarfive,jdbcType=VARCHAR},
+      birthDefect = #{birthdefect,jdbcType=VARCHAR},
+      pathologicJaundice = #{pathologicjaundice,jdbcType=VARCHAR},
+      respiratoryDistress = #{respiratorydistress,jdbcType=VARCHAR},
+      deliveryPosition = #{deliveryposition,jdbcType=VARCHAR},
+      modeOfDelivery = #{modeofdelivery,jdbcType=VARCHAR},
+      pneumonia = #{pneumonia,jdbcType=VARCHAR},
+      scleroma = #{scleroma,jdbcType=VARCHAR},
+      birthInjury = #{birthinjury,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      encephalopathyHIE = #{encephalopathyhie,jdbcType=VARCHAR},
+      umbilicalInfection = #{umbilicalinfection,jdbcType=VARCHAR},
+      externalGenitalOrgans = #{externalgenitalorgans,jdbcType=VARCHAR},
+      septicemia = #{septicemia,jdbcType=VARCHAR},
+      tetanus = #{tetanus,jdbcType=VARCHAR},
+      indigestion = #{indigestion,jdbcType=VARCHAR},
+      weight = #{weight,jdbcType=DOUBLE},
+      height = #{height,jdbcType=DOUBLE},
+      birthOutcomes = #{birthoutcomes,jdbcType=VARCHAR},
+      neonatalSurvival = #{neonatalsurvival,jdbcType=VARCHAR},
+      stillbirthCause = #{stillbirthcause,jdbcType=VARCHAR},
+      neonatalDeathCause = #{neonataldeathcause,jdbcType=VARCHAR},
+      ApgaOne = #{apgaone,jdbcType=VARCHAR},
+      breastFeeding = #{breastfeeding,jdbcType=VARCHAR},
+      neonatalScreening = #{neonatalscreening,jdbcType=VARCHAR},
+      filler = #{filler,jdbcType=VARCHAR},
+      enter = #{enter,jdbcType=VARCHAR},
+      deliveryPositionDetails = #{deliverypositiondetails,jdbcType=LONGVARCHAR},
+      modeOfDeliveryDetails = #{modeofdeliverydetails,jdbcType=LONGVARCHAR},
+      birthInjuryDetails = #{birthinjurydetails,jdbcType=LONGVARCHAR},
+      birthOutcomesDetails = #{birthoutcomesdetails,jdbcType=LONGVARCHAR},
+      stillbirthCauseDetails = #{stillbirthcausedetails,jdbcType=LONGVARCHAR},
+      neonatalScreeningDetails = #{neonatalscreeningdetails,jdbcType=LONGVARCHAR},
+      healthGuidance = #{healthguidance,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, birthOrder, birthDate, ApgarFive, birthDefect, pathologicJaundice, respiratoryDistress, 
+    deliveryPosition, modeOfDelivery, pneumonia, scleroma, birthInjury, sex, encephalopathyHIE, 
+    umbilicalInfection, externalGenitalOrgans, septicemia, tetanus, indigestion, weight, 
+    height, birthOutcomes, neonatalSurvival, stillbirthCause, neonatalDeathCause, ApgaOne, 
+    breastFeeding, neonatalScreening, filler, enter, deliveryPositionDetails, modeOfDeliveryDetails, 
+    birthInjuryDetails, birthOutcomesDetails, stillbirthCauseDetails, neonatalScreeningDetails, 
+    healthGuidance
+    from newborn_situation
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, birthOrder, birthDate, ApgarFive, birthDefect, pathologicJaundice, respiratoryDistress, 
+    deliveryPosition, modeOfDelivery, pneumonia, scleroma, birthInjury, sex, encephalopathyHIE, 
+    umbilicalInfection, externalGenitalOrgans, septicemia, tetanus, indigestion, weight, 
+    height, birthOutcomes, neonatalSurvival, stillbirthCause, neonatalDeathCause, ApgaOne, 
+    breastFeeding, neonatalScreening, filler, enter, deliveryPositionDetails, modeOfDeliveryDetails, 
+    birthInjuryDetails, birthOutcomesDetails, stillbirthCauseDetails, neonatalScreeningDetails, 
+    healthGuidance
+    from newborn_situation
+  </select>
+  
+  <!-- 条件查询 -->
+  <select id="selectByQuery" parameterType="AntenatalInitialInspectionQuery" resultMap="BaseResultMap">
+    select id, birthOrder, birthDate, ApgarFive, birthDefect, pathologicJaundice, respiratoryDistress, 
+    deliveryPosition, modeOfDelivery, pneumonia, scleroma, birthInjury, sex, encephalopathyHIE, 
+    umbilicalInfection, externalGenitalOrgans, septicemia, tetanus, indigestion, weight, 
+    height, birthOutcomes, neonatalSurvival, stillbirthCause, neonatalDeathCause, ApgaOne, 
+    breastFeeding, neonatalScreening, filler, enter, deliveryPositionDetails, modeOfDeliveryDetails, 
+    birthInjuryDetails, birthOutcomesDetails, stillbirthCauseDetails, neonatalScreeningDetails, 
+    healthGuidance
+    from newborn_situation
+    <include refid="whereSql"></include>
+  </select>
+  
+  <sql id="whereSql">
+  	<where>
+  	<!-- 	<if test="q!=null and q!=''">
+  			and (healthcode like concat('%',#{q},'%') or peidnumber like concat('%',#{q},'%') or
+  			prename like concat('%',#{q},'%') or prephonenumber like concat('%',#{q},'%') or 
+  			fillperson like concat('%',#{q},'%') or inputperson like concat('%',#{q},'%') or
+  			highriskevaluate like concat('%',#{q},'%'))
+  		</if>
+  		 -->
+  		
+  	</where>
+  </sql>
+  
+</mapper>

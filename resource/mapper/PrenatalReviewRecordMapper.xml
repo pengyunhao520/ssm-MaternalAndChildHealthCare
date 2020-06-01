@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.PrenatalReviewRecordMapper">
+  <resultMap id="BaseResultMap" type="domain.PrenatalReviewRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="preidnumber" jdbcType="VARCHAR" property="preidnumber" />
+    <result column="prephonenumber" jdbcType="VARCHAR" property="prephonenumber" />
+    <result column="prename" jdbcType="VARCHAR" property="prename" />
+    <result column="healthcode" jdbcType="VARCHAR" property="healthcode" />
+    <result column="reviewdate" jdbcType="DATE" property="reviewdate" />
+    <result column="gestationalweek" jdbcType="INTEGER" property="gestationalweek" />
+    <result column="systolicpressure" jdbcType="INTEGER" property="systolicpressure" />
+    <result column="diastolicpressure" jdbcType="INTEGER" property="diastolicpressure" />
+    <result column="weight" jdbcType="INTEGER" property="weight" />
+    <result column="fundalheight" jdbcType="INTEGER" property="fundalheight" />
+    <result column="abdominalcircumference" jdbcType="INTEGER" property="abdominalcircumference" />
+    <result column="fetalposition" jdbcType="INTEGER" property="fetalposition.id" />
+    <result column="fetalpresentation" jdbcType="INTEGER" property="fetalpresentation.id" />
+    <result column="fetalheart" jdbcType="INTEGER" property="fetalheart" />
+    <result column="bloodsugar" jdbcType="REAL" property="bloodsugar" />
+    <result column="edema" jdbcType="VARCHAR" property="edema" />
+    <result column="urineprotein" jdbcType="VARCHAR" property="urineprotein" />
+    <result column="hemoglobin" jdbcType="REAL" property="hemoglobin" />
+    <result column="Bmode" jdbcType="VARCHAR" property="bmode" />
+    <result column="highriskevaluate" jdbcType="VARCHAR" property="highriskevaluate" />
+    <result column="appointmentdate" jdbcType="DATE" property="appointmentdate" />
+    <result column="checkdoctor" jdbcType="VARCHAR" property="checkdoctor" />
+    <result column="reviewcount" jdbcType="INTEGER" property="reviewcount" />
+    <result column="reviewquestionsdescribe" jdbcType="LONGVARCHAR" property="reviewquestionsdescribe" />
+    <result column="highriskdetails" jdbcType="LONGVARCHAR" property="highriskdetails" />
+    <result column="dname" jdbcType="INTEGER" property="fetalposition.name" />
+    <result column="ddname" jdbcType="INTEGER" property="fetalpresentation.name" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from prenatal_review_record
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.PrenatalReviewRecord">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into prenatal_review_record ( preidnumber, prephonenumber, 
+      prename, healthcode, reviewdate, 
+      gestationalweek, systolicpressure, diastolicpressure, 
+      weight, fundalheight, abdominalcircumference, fetalposition, 
+      fetalpresentation, fetalheart, bloodsugar, 
+      edema, urineprotein, hemoglobin, 
+      Bmode, highriskevaluate, appointmentdate, 
+      checkdoctor, reviewcount, reviewquestionsdescribe, 
+      highriskdetails)
+    values (#{preidnumber,jdbcType=VARCHAR}, #{prephonenumber,jdbcType=VARCHAR}, 
+      #{prename,jdbcType=VARCHAR}, #{healthcode,jdbcType=VARCHAR}, #{reviewdate,jdbcType=DATE}, 
+      #{gestationalweek,jdbcType=INTEGER}, #{systolicpressure,jdbcType=INTEGER}, #{diastolicpressure,jdbcType=INTEGER}, 
+      #{weight,jdbcType=INTEGER}, #{fundalheight,jdbcType=INTEGER},  #{abdominalcircumference,jdbcType=INTEGER},#{fetalposition.id,jdbcType=INTEGER}, 
+      #{fetalpresentation.id,jdbcType=INTEGER}, #{fetalheart,jdbcType=INTEGER}, #{bloodsugar,jdbcType=REAL}, 
+      #{edema,jdbcType=VARCHAR}, #{urineprotein,jdbcType=VARCHAR}, #{hemoglobin,jdbcType=REAL}, 
+      #{bmode,jdbcType=VARCHAR}, #{highriskevaluate,jdbcType=VARCHAR}, #{appointmentdate,jdbcType=DATE}, 
+      #{checkdoctor,jdbcType=VARCHAR}, #{reviewcount,jdbcType=INTEGER}, #{reviewquestionsdescribe,jdbcType=LONGVARCHAR}, 
+      #{highriskdetails,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.PrenatalReviewRecord">
+    update prenatal_review_record
+    set preidnumber = #{preidnumber,jdbcType=VARCHAR},
+      prephonenumber = #{prephonenumber,jdbcType=VARCHAR},
+      prename = #{prename,jdbcType=VARCHAR},
+      healthcode = #{healthcode,jdbcType=VARCHAR},
+      reviewdate = #{reviewdate,jdbcType=DATE},
+      gestationalweek = #{gestationalweek,jdbcType=INTEGER},
+      systolicpressure = #{systolicpressure,jdbcType=INTEGER},
+      diastolicpressure = #{diastolicpressure,jdbcType=INTEGER},
+      weight = #{weight,jdbcType=INTEGER},
+      fundalheight = #{fundalheight,jdbcType=INTEGER},
+      abdominalcircumference = #{abdominalcircumference,jdbcType=INTEGER},
+      fetalposition = #{fetalposition.id,jdbcType=INTEGER},
+      fetalpresentation = #{fetalpresentation.id,jdbcType=INTEGER},
+      fetalheart = #{fetalheart,jdbcType=INTEGER},
+      bloodsugar = #{bloodsugar,jdbcType=REAL},
+      edema = #{edema,jdbcType=VARCHAR},
+      urineprotein = #{urineprotein,jdbcType=VARCHAR},
+      hemoglobin = #{hemoglobin,jdbcType=REAL},
+      Bmode = #{bmode,jdbcType=VARCHAR},
+      highriskevaluate = #{highriskevaluate,jdbcType=VARCHAR},
+      appointmentdate = #{appointmentdate,jdbcType=DATE},
+      checkdoctor = #{checkdoctor,jdbcType=VARCHAR},
+      reviewcount = #{reviewcount,jdbcType=INTEGER},
+      reviewquestionsdescribe = #{reviewquestionsdescribe,jdbcType=LONGVARCHAR},
+      highriskdetails = #{highriskdetails,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, preidnumber, prephonenumber, prename, healthcode, reviewdate, gestationalweek, 
+    systolicpressure, diastolicpressure, weight, fundalheight, abdominalcircumference, fetalposition, fetalpresentation, 
+    fetalheart, bloodsugar, edema, urineprotein, hemoglobin, Bmode, highriskevaluate, 
+    appointmentdate, checkdoctor, reviewcount, reviewquestionsdescribe, highriskdetails
+    from prenatal_review_record
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, preidnumber, prephonenumber, prename, healthcode, reviewdate, gestationalweek, 
+    systolicpressure, diastolicpressure, weight, fundalheight, abdominalcircumference, fetalposition, fetalpresentation, 
+    fetalheart, bloodsugar, edema, urineprotein, hemoglobin, Bmode, highriskevaluate, 
+    appointmentdate, checkdoctor, reviewcount, reviewquestionsdescribe, highriskdetails
+    from prenatal_review_record
+  </select>
+  
+   <!-- 根据preWomanidnumber查询所有 -->
+  <select id="selectAllByidnumber" resultMap="BaseResultMap">
+    select id, preidnumber, prename,prephonenumber,healthcode
+    from prenatal_review_record where preidNumber = #{preidnumber,jdbcType=VARCHAR}
+  </select>
+  
+  <!-- 分页以及条件查询 -->
+   <select id="selectByQuery" parameterType="PrenatalReviewRecordQuery" resultMap="BaseResultMap">
+    select p.id, preidnumber, prephonenumber, prename, healthcode, reviewdate, gestationalweek, 
+    systolicpressure, diastolicpressure, weight, fundalheight, abdominalcircumference, fetalposition, fetalpresentation, 
+    fetalheart, bloodsugar, edema, urineprotein, hemoglobin, Bmode, highriskevaluate, 
+    appointmentdate, checkdoctor, reviewcount, reviewquestionsdescribe, highriskdetails,d.name as dname,dd.name as ddname
+    from prenatal_review_record p left join dictionarydetails d on fetalposition = d.id left join dictionarydetails dd on fetalpresentation=dd.id
+    <include refid="whereSql"></include>
+  </select>
+   <sql id="whereSql">
+  	<where>
+  		<if test="q!=null and q!=''">
+  			and (healthcode like concat('%',#{q},'%') or preidnumber like concat('%',#{q},'%') or
+  			prename like concat('%',#{q},'%') or prephonenumber like concat('%',#{q},'%') or
+  			highriskevaluate like concat('%',#{q},'%'))
+  		</if>
+  		<if test="gestationalweek!=null and gestationalweek!=''">
+  			and gestationalweek = #{gestationalweek}
+  		</if>
+  		<if test="weight!=null and weight!=''">
+  			and weight = #{weight}
+  		</if>
+  		<if test="fundalheight!=null and fundalheight!=''">
+  			and fundalheight = #{fundalheight}
+  		</if>
+  		<if test="abdominalcircumference!=null and abdominalcircumference!=''">
+  			and abdominalcircumference = #{abdominalcircumference}
+  		</if>
+  		<if test="fetalposition!=null and fetalposition!=''">
+  			and fetalposition = #{fetalposition}
+  		</if>
+  		<if test="fetalpresentation!=null and fetalpresentation!=''">
+  			and fetalpresentation = #{fetalpresentation}
+  		</if>
+  		<if test="edema!=null and edema!=''">
+  			and edema = #{edema}
+  		</if>
+  		<if test="urineprotein!=null and urineprotein!=''">
+  			and urineprotein = #{urineprotein}
+  		</if>
+  		<if test="bmode!=null and bmode!=''">
+  			and Bmode = #{bmode}
+  		</if>
+  		<if test="checkdoctor!=null and checkdoctor!=''">
+  			and checkdoctor = #{checkdoctor}
+  		</if>
+  		<if test="highriskevaluate!=null and highriskevaluate!=''">
+  			and highriskevaluate = #{highriskevaluate}
+  		</if>
+  		<if test="begintime!=null and begintime!=''">
+  			and reviewdate &gt;= #{begintime}
+  		</if>
+  		<if test="endtime!=null and endtime!=''">
+  			and reviewdate &lt;= #{endtime}
+  		</if>
+  	</where>
+  </sql>
+</mapper>

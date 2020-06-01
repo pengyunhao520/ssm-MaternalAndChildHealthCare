@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.AntenatalReviewSummaryParturientMapper">
+  <resultMap id="BaseResultMap" type="domain.AntenatalReviewSummaryParturient">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="previewcount" jdbcType="INTEGER" property="previewcount" />
+    <result column="ppih" jdbcType="INTEGER" property="ppih.id" />
+    <result column="placentaprevia" jdbcType="INTEGER" property="placentaprevia.id" />
+    <result column="placentalabruption" jdbcType="INTEGER" property="placentalabruption.id" />
+    <result column="fetalposition" jdbcType="INTEGER" property="fetalposition.id" />
+    <result column="multiplebirth" jdbcType="VARCHAR" property="multiplebirth" />
+    <result column="amnioticfluid" jdbcType="VARCHAR" property="amnioticfluid" />
+    <result column="pelvicstenosis" jdbcType="VARCHAR" property="pelvicstenosis" />
+    <result column="developmentaldelay" jdbcType="VARCHAR" property="developmentaldelay" />
+    <result column="fetaldistress" jdbcType="VARCHAR" property="fetaldistress" />
+    <result column="heartdisease" jdbcType="INTEGER" property="heartdisease.id" />
+    <result column="viralhepatitis" jdbcType="INTEGER" property="viralhepatitis.id" />
+    <result column="purineprotein" jdbcType="VARCHAR" property="purineprotein" />
+    <result column="hemoglobin" jdbcType="REAL" property="hemoglobin" />
+    <result column="phighriskevaluate" jdbcType="VARCHAR" property="phighriskevaluate" />
+    <result column="phighriskchange" jdbcType="INTEGER" property="phighriskchange.id" />
+    <result column="summarydate" jdbcType="DATE" property="summarydate" />
+    <result column="fillperson" jdbcType="VARCHAR" property="fillperson" />
+    <result column="inputperson" jdbcType="VARCHAR" property="inputperson" />
+    <result column="additionalremarks" jdbcType="LONGVARCHAR" property="additionalremarks" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from antenatal_review_summary28_parturient
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="domain.AntenatalReviewSummaryParturient">
+    <selectKey keyProperty="id" order="BEFORE" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into antenatal_review_summary28_parturient (id, previewcount, ppih, 
+      placentaprevia, placentalabruption, fetalposition, 
+      multiplebirth, amnioticfluid, pelvicstenosis, 
+      developmentaldelay, fetaldistress, heartdisease, 
+      viralhepatitis, purineprotein, hemoglobin, 
+      phighriskevaluate, phighriskchange, summarydate, 
+      fillperson, inputperson, additionalremarks
+      )
+    values (#{id,jdbcType=INTEGER}, #{previewcount,jdbcType=INTEGER}, #{ppih.id,jdbcType=INTEGER}, 
+      #{placentaprevia.id,jdbcType=INTEGER}, #{placentalabruption.id,jdbcType=INTEGER}, #{fetalposition.id,jdbcType=INTEGER}, 
+      #{multiplebirth,jdbcType=VARCHAR}, #{amnioticfluid,jdbcType=VARCHAR}, #{pelvicstenosis,jdbcType=VARCHAR}, 
+      #{developmentaldelay,jdbcType=VARCHAR}, #{fetaldistress,jdbcType=VARCHAR}, #{heartdisease.id,jdbcType=INTEGER}, 
+      #{viralhepatitis.id,jdbcType=INTEGER}, #{purineprotein,jdbcType=VARCHAR}, #{hemoglobin,jdbcType=REAL}, 
+      #{phighriskevaluate,jdbcType=VARCHAR}, #{phighriskchange.id,jdbcType=INTEGER}, #{summarydate,jdbcType=DATE}, 
+      #{fillperson,jdbcType=VARCHAR}, #{inputperson,jdbcType=VARCHAR}, #{additionalremarks,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="domain.AntenatalReviewSummaryParturient">
+    update antenatal_review_summary28_parturient
+    set previewcount = #{previewcount,jdbcType=INTEGER},
+      ppih = #{ppih.id,jdbcType=INTEGER},
+      placentaprevia = #{placentaprevia.id,jdbcType=INTEGER},
+      placentalabruption = #{placentalabruption.id,jdbcType=INTEGER},
+      fetalposition = #{fetalposition.id,jdbcType=INTEGER},
+      multiplebirth = #{multiplebirth,jdbcType=VARCHAR},
+      amnioticfluid = #{amnioticfluid,jdbcType=VARCHAR},
+      pelvicstenosis = #{pelvicstenosis,jdbcType=VARCHAR},
+      developmentaldelay = #{developmentaldelay,jdbcType=VARCHAR},
+      fetaldistress = #{fetaldistress,jdbcType=VARCHAR},
+      heartdisease = #{heartdisease.id,jdbcType=INTEGER},
+      viralhepatitis = #{viralhepatitis.id,jdbcType=INTEGER},
+      purineprotein = #{purineprotein,jdbcType=VARCHAR},
+      hemoglobin = #{hemoglobin,jdbcType=REAL},
+      phighriskevaluate = #{phighriskevaluate,jdbcType=VARCHAR},
+      phighriskchange = #{phighriskchange.id,jdbcType=INTEGER},
+      summarydate = #{summarydate,jdbcType=DATE},
+      fillperson = #{fillperson,jdbcType=VARCHAR},
+      inputperson = #{inputperson,jdbcType=VARCHAR},
+      additionalremarks = #{additionalremarks,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, previewcount, ppih, placentaprevia, placentalabruption, fetalposition, multiplebirth, 
+    amnioticfluid, pelvicstenosis, developmentaldelay, fetaldistress, heartdisease, viralhepatitis, 
+    purineprotein, hemoglobin, phighriskevaluate, phighriskchange, summarydate, fillperson, 
+    inputperson, additionalremarks
+    from antenatal_review_summary28_parturient
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, previewcount, ppih, placentaprevia, placentalabruption, fetalposition, multiplebirth, 
+    amnioticfluid, pelvicstenosis, developmentaldelay, fetaldistress, heartdisease, viralhepatitis, 
+    purineprotein, hemoglobin, phighriskevaluate, phighriskchange, summarydate, fillperson, 
+    inputperson, additionalremarks
+    from antenatal_review_summary28_parturient
+  </select>
+</mapper>

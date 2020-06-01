@@ -1,0 +1,41 @@
+[{    
+    "id": 1,    
+    "text": "基本信息",    
+    "state": "open",    
+    "children": [{    
+        "id": 11,    
+        "text": "人员基本信息",
+        "iconCls":"icon-man",
+        "url":"PersonBasicInformation/index"   
+    },{    
+        "id": 12,    
+        "text": "孕妇基本信息",  
+        "iconCls":"icon-man",
+        "url":"PregnantWomanInformation/index"       
+    },{    
+        "id": 13,    
+        "text": "婚前保健信息",  
+        "iconCls":"icon-man",
+        "url":"PremaritaHealthInformation/index"       
+    }]    
+},{    
+    "id": 1,    
+    "text": "产前检查",    
+    "state": "open",    
+    "children": [{    
+        "id": 11,    
+        "text": "产前初次检查",
+        "iconCls":"icon-man",
+        "url":"/AntenatalInitialInspection/index"   
+    },{    
+        "id": 12,    
+        "text": "产前复查记录",  
+        "iconCls":"icon-man",
+        "url":"/PrenatalReviewRecord/index"       
+    },{    
+        "id": 13,    
+        "text": "产前复查总结",  
+        "iconCls":"icon-man",
+        "url":"/AntenatalReviewSummary/index"       
+    }]    
+}]  

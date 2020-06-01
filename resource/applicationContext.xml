@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation=
+	"http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<!-- 扫描包  service层 -->
+	<context:component-scan base-package="service"></context:component-scan>
+
+	<!-- 用它来整合mybatis -->
+	<context:property-placeholder location="classpath:db.properties"/>
+	
+	<!-- 配置数据源 -->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driver}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	<!-- 将SqlSessionFactory交给Spring管理 -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<!-- 拿到数据库连接 -->
+		<property name="dataSource" ref="dataSource" />
+		<!-- 配置别名 -->
+		<property name="typeAliasesPackage">
+			<value>
+  				domain
+  				query
+  			</value>
+		</property>
+		<!-- 注册映射文件   classpath*不仅会在源码中找，也会在jar包中找-->
+		<property name="mapperLocations" value="classpath*:mapper/*Mapper.xml"></property>
+			<!-- 配置分页插件 -->
+		<property name="plugins">
+			<array>
+				<bean class="com.github.pagehelper.PageInterceptor">
+					<property name="properties">
+						<value>
+							<!-- 你使用的数据库类型 -->
+							reasonable=true
+						</value>
+					</property>
+				</bean>
+			</array>
+		</property>
+	</bean>
+
+	
+	<!--注入映射器-->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<!-- mapper接口所在的包 -->
+		<property name="basePackage" value="mapper" />
+	</bean>
+	
+	
+	<!-- 事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<!-- 事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+	<!-- 引用shiro的配置文件 -->
+	<import resource="applicationContext-shiro.xml"/>
+
+</beans>

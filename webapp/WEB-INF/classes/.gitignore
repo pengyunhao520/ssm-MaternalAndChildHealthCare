@@ -1,0 +1,17 @@
+/applicationContext-mvc.xml
+/applicationContext-shiro.xml
+/applicationContext.xml
+/controller/
+/db.properties
+/domain/
+/log4j.properties
+/mapper/
+/BaseTest.class
+/IPersonBasicInformationServiceTest.class
+/IPregnantWomanInformationServiceTest.class
+/IUserServiceTest.class
+/NewbornSituationTest.class
+/query/
+/service/
+/shiro/
+/util/
